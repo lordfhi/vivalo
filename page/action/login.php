@@ -11,11 +11,15 @@ $data = $db->db_query("select * from vivalo_user where username='$username' and 
  
 // menghitung jumlah data yang ditemukan
 $cek = mysqli_num_rows($data);
- 
 if($cek > 0){
-	$_SESSION['username'] = $username;
-	$_SESSION['status'] = "login";
-	header("location: ../page-customer.php");
+	$cekData = mysqli_fetch_assoc($data);
+	if($cekData['level'] == '1') {
+		$_SESSION['username'] = $username;
+		$_SESSION['status'] = "login";
+			header("location: ../admin/admin.php");
+	}else{
+			header("location: ../page-customer.php");
+	}
 }else{
 header("location: ../page-register.php?pesan=gagal");
 }
