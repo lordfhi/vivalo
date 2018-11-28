@@ -12,13 +12,13 @@ class Database
         return $this->mysqli;
     }
 
-    public function db_query($sql)
+    public function query($sql)
     {
         $this->dbk = $this->mysqli->query($sql);
         return $this->dbk;
     }
 
-    public function db_num($res)
+    public function num_rows($res)
     {
         return mysqli_num_rows($res);
     }

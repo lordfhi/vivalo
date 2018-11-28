@@ -1,11 +1,16 @@
+<?php
+require_once __DIR__."/config/config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>VIVALO | VIVA Laundry Online</title>
   <link rel="stylesheet" type="text/css" href="asset/css/reset.css">
   <link rel="stylesheet" type="text/css" href="asset/css/main.css">
-  <script type="text/javascript" src="asset/js/jquery.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script type="text/javascript" src="asset/js/main.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
 
@@ -59,7 +64,7 @@
     </ul>
   </section><!-- services End -->
   
-  <section class="call_to_action">
+  <section class="call_to_action" style="margin-bottom: 0px;">
     <div class="wrapper">
       <img src="asset/img/ii.png" alt="" title="">
       <section class="cta_desc">
@@ -70,9 +75,48 @@
     </div>
   </section><!-- call_to_action End -->
 
+  <section class="call_to_action">
+    <div class="" style="padding-top: 100px;">
+      <section class="">
+        <form method="post" class="" action="<?= $app_url."/page/action/pesan.php" ?>" style="font-size: 30pt; padding-left: 15%;" id="formPesanan">
+          <table style="width: 80%;" border="1">
+            <tr>
+              <td style="width: 30%;">Tanggal Pesan</td>
+              <td style="width: 5%">:</td>
+              <td style="width: 45%"><input type="text" name="datepicker" id="datepicker" style="font-size: 30pt; width: 100%;"></td>
+            </tr>
+            <tr>
+              <td colspan="3">&nbsp;</td>
+            </tr>
+            <tr>
+              <td style="width: 15%;">Paket</td>
+              <td style="width: 5%">:</td>
+              <td style="width: 45%; padding-left: 8%;" align="left"><input type="checkbox" name="paket" value="kilat" style="transform: scale(2);">&nbsp;&nbsp;&nbsp;Kilat <small style="font-size: 15pt;">~ 1kg : Rp 30.000</small></td>
+            </tr>
+            <tr>
+              <td style="width: 15%;"></td>
+              <td style="width: 5%"></td>
+              <td style="width: 45%; padding-left: 8%;" align="left"><input type="checkbox" name="paket" value="standart" style="transform: scale(2);">&nbsp;&nbsp;&nbsp;Standart <small style="font-size: 15pt;">~ 1kg : Rp 15.000</small></td>
+            </tr>
+            <tr>
+              <td colspan="3">&nbsp;</td>
+            </tr>
+            <tr>
+              <td colspan="2" align="center">
+              </td>
+              <td align="center">
+                <a href="#" class="cta_btn" style="margin: 0px; width: 70%;" onclick="$('#formPesanan').submit();">KIRIM</a>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </section>
+    </div>
+  </section><!-- call_to_action End -->
+
   <section class="newsletter">
-    <div class="wrapper">
-      <p>"Berbahagialah dan laundry baju kotormu"</p>
+    <div class="wrapper" align="center">
+      <p style="margin-left: 0px;">"Berbahagialah dan laundry baju kotormu"</p>
     </div>
   </section><!-- newsletter End -->
 
@@ -89,3 +133,9 @@
   </footer><!-- footer End -->
 
 </body>
+<script type="text/javascript">
+$( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+</script>
+</html>

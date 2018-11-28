@@ -1,5 +1,13 @@
 <?php
 require_once __DIR__."/../config/config.php";
+
+/**
+ * Validasi kalo udah login
+ */
+if (cekLoginAuth())
+{
+   header("location: ".$app_url.cekLoginUrl());
+}
 ?>
 
 <!DOCTYPE html>
