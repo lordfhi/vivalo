@@ -16,21 +16,39 @@
       <div class="cont_login">
       <div class="main-title">
       <h1><strong>VIVALO</strong> : FORM REGISTRASI</h1>
-      <div class="main-title"></div>
+      <div class="main-title">
+         <?php 
+         if(isset($_GET['pesan'])){
+            if($_GET['pesan'] == "gagal"){
+               echo "<center><h3>Login gagal! username dan password salah!</h3></center>";
+            }else if($_GET['pesan'] == "logout"){
+               echo "<center><h3>Anda telah berhasil logout</h3></center>";
+            }else if($_GET['pesan'] == "belum_login"){
+               echo "<center><h3>Anda harus login untuk mengakses halaman admin</h3></center>";
+            }
+         }
+         ?>
+      
+   </div>
       <div id="holder">
          <div id="login-holder">
             <h4>Sudah punya akun?</h4>
             <div id="login-inputs">
-               <form action="action/login.php" method="post">
-               <input id="username" class="login-inputs" type="text" placeholder='Nama Pengguna'>
-               <input id="password" class="login-inputs" type="password" placeholder='Kata Sandi'>
-               <button class="login-btn" style="width: 150px;height: 30px;background-color: #9b59b6;color: #fff;margin: 15px 50px;display: inline-block;border: none;font-family: 'Cutrims', sans-serif;">MASUK</button>
-               </form>
+                <div id="form-container-log">
+                  <form action="action/login.php" method="post">
+                  <input id="username" class="login-inputs" name="username" type="text" placeholder='Nama Pengguna'>
+                  <input id="password" class="login-inputs" name="password" type="password" placeholder='Kata Sandi'>
+                  <button class="btn-log">MASUK</button>
+                  </form>
+              </div>
             </div>
             <a href="#" class='login-inputs'>Lupa Kata Sandi??</a>
             <button id="login" class="btn-daftar">MASUK</button>
          </div>
          <div id="divider"></div>
+
+
+
          <div id="signup-holder">
             <h4>Belum punya akun?</h4>
             <div id="form-container">

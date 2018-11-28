@@ -14,6 +14,7 @@ $('#signup').click(function() {
    $(this).hide()
 });
 $('#login').click(function() {
+   $('#form-container-log').show();
    $('.signup-inputs').slideUp('fast','linear');
    $('#forgot-password').slideDown('slow','linear');
    $('.login-inputs').slideDown('fast','linear');
@@ -22,6 +23,7 @@ $('#login').click(function() {
    $('#signup').css('margin','15px 50px');
    $('.login-btn').slideDown();
    $("#login").slideUp();
+    $(this).hide()
 });
 
 
@@ -29,5 +31,6 @@ $(document).ready(function(){
    setTimeout(function(){
       $('.login-btn').slideUp();
       $('#form-container').hide();
+      $('#form-container-log').hide();
    }, 20);
 });

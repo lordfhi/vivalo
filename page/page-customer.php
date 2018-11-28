@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +20,15 @@
 						<li><a href="page-profilecostumer.php">Profil</a></li>
 						<li><a href="page-pengaturan.php">Pengaturan</a></li>
 						<li><a href="#">Tentang</a></li>
-						<li><a href="#">Keluar</a></li>
+						<?php 
+						session_start();
+						if (isset($_SESSION['status'])!='login') {
+							echo "<li><a href='page-register.php'>Masuk</a></li>";
+									}
+						echo "<li><a href='action/logout.php'>Keluar</a></li>";
+									?>
+
+						
 					</ul>
 				</nav>
 			</div>

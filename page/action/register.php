@@ -7,4 +7,4 @@ $pass = $_POST["password"];
 
 $db->db_query("INSERT INTO `vivalo_user` (`nama`, `username`, `password`, `level`) VALUES ('".$nama."', '".$user."', '".md5($pass)."', 3)");
 
-header("location: /../page/page-customer.php");
+header("location: ../page-customer.php");

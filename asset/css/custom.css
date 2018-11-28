@@ -180,6 +180,10 @@ input {
   text-indent: 10px;
   display: none;
 }
+
+.btn-log{
+  width: 150px;height: 30px;background-color: #9b59b6;color: #fff;margin: 15px 50px;display: inline-block;border: none;font-family: 'Cutrims', sans-serif;
+}
 /*END CSS REGISTER*/
 
 /*START CSS*/
