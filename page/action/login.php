@@ -16,7 +16,7 @@ if($cek > 0){
 	if($cekData['level'] == '1') {
 		$_SESSION['username'] = $username;
 		$_SESSION['status'] = "login";
-			header("location: ../admin/admin.php");
+			header("location: ../admin/index.php");
 	}else{
 			header("location: ../page-customer.php");
 	}
