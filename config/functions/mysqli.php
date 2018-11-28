@@ -4,39 +4,28 @@
  */
 class Database
 {
-    private $host;
-    private $user;
-    private $pass;
-    private $db;
-    public $mysqli;
+    private $mysqli;
 
-    private function db_connect()
+    public function __construct($host, $user, $pass, $db)
     {
-        $this->host = 'localhost';
-        $this->user = 'root';
-        $this->pass = '';
-        $this->db = 'vivalo';
-
-        $this->mysqli = new mysqli($this->host, $this->user, $this->pass, $this->db);
+        $this->mysqli = new mysqli($host, $user, $pass, $db);
         return $this->mysqli;
-    }
-
-    public function __construct()
-    {
-        $this->db_connect();
     }
 
     public function db_query($sql)
     {
-        return $this->mysqli->query($sql);
+        $this->dbk = $this->mysqli->query($sql);
+        return $this->dbk;
     }
 
-    public function db_num($sql)
+    public function db_num($res)
     {
-        $result = $this->db_query($sql);
-        return $result->num_rows;
+        return mysqli_num_rows($res);
+    }
+
+    public function fetch($res)
+    {
+        return mysqli_fetch_assoc($res);
     }
 
 }
-
-$db = new Database;
