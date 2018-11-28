@@ -1,3 +1,7 @@
+<?php
+require_once __DIR__."/../config/config.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en" >
 
@@ -26,7 +30,7 @@
         <li><a href="page-profilecostumer.php">Profil</a></li>
         <li><a href="page-pengaturan.php">Pengaturan</a></li>
         <li><a href="#">Tentang</a></li>
-        <li><a href="#">Keluar</a></li>
+        <?= (isset($_SESSION["status"]) ? "<li><a href='action/logout.php'>Keluar</a></li>" : "<li><a href='page-register.php'>Masuk</a></li>") ?>
       </ul>
     </nav>
   </div>

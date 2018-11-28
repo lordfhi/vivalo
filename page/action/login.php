@@ -1,5 +1,4 @@
 <?php 
-session_start();
 require_once __DIR__."/../../config/config.php";
 
 // menangkap data yang dikirim dari form
@@ -11,6 +10,7 @@ $data = $db->db_query("select * from vivalo_user where username='$username' and 
  
 // menghitung jumlah data yang ditemukan
 $cek = mysqli_num_rows($data);
+
 if($cek > 0){
 	$cekData = mysqli_fetch_assoc($data);
 	if($cekData['level'] == '1') {
