@@ -8,6 +8,9 @@ $('#signup').click(function() {
    $('#btn-login').css('padding-top','100px');
    $('#signup').css('margin','25px 50px');
    $('#awe').show();
+   $('.login-btn').slideUp();
+   $("#login").slideDown();
+   $("#signup").slideDown();
    $(this).hide()
 });
 $('#login').click(function() {
@@ -17,9 +20,14 @@ $('#login').click(function() {
    $('#signup-holder').css('padding-top','100px');
    $('#login-holder').css('padding-top','55px');
    $('#signup').css('margin','15px 50px');
+   $('.login-btn').slideDown();
+   $("#login").slideUp();
 });
 
 
 $(document).ready(function(){
-   $('#form-container').hide();
+   setTimeout(function(){
+      $('.login-btn').slideUp();
+      $('#form-container').hide();
+   }, 20);
 });

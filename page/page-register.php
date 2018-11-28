@@ -21,19 +21,22 @@
          <div id="login-holder">
             <h4>Sudah punya akun?</h4>
             <div id="login-inputs">
+               <form action="action/login.php" method="post">
                <input id="username" class="login-inputs" type="text" placeholder='Nama Pengguna'>
                <input id="password" class="login-inputs" type="password" placeholder='Kata Sandi'>
+               <button class="login-btn" style="width: 150px;height: 30px;background-color: #9b59b6;color: #fff;margin: 15px 50px;display: inline-block;border: none;font-family: 'Cutrims', sans-serif;">MASUK</button>
+               </form>
             </div>
             <a href="#" class='login-inputs'>Lupa Kata Sandi??</a>
-            <a href="page/page-costumer.php" id="login">MASUK</a>
+            <button id="login" class="btn-daftar">MASUK</button>
          </div>
          <div id="divider"></div>
          <div id="signup-holder">
             <h4>Belum punya akun?</h4>
             <div id="form-container">
-	            <form method="post" action="config/proses-register.php">
+	            <form method="post" action="action/register.php">
 	               <input id="full-name" class="signup-inputs" name="nama" type="text" placeholder='Nama Pengguna'>
-	               <input id="Username" class="signup-inputs" type="text" name="username" placeholder='Username'>
+	               <input id="Username" class="signup-inputs" type="username" name="username" placeholder='Username'>
 	               <input id="password" class="signup-inputs" type="password" name="password" placeholder='Kata Sandi'>
 	               <button id='btn-regis'>OKE</button>
 	            </form>
