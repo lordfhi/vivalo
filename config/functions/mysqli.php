@@ -4,18 +4,17 @@
  */
 class Database
 {
-    private $mysqli;
+    public $connection;
 
     public function __construct($host, $user, $pass, $db)
     {
-        $this->mysqli = new mysqli($host, $user, $pass, $db);
-        return $this->mysqli;
+        $this->connection = mysqli_connect($host, $user, $pass, $db);
+        return $this->connection;
     }
 
     public function query($sql)
     {
-        $this->dbk = $this->mysqli->query($sql);
-        return $this->dbk;
+        return mysqli_query($this->connection, $sql);
     }
 
     public function num_rows($res)
@@ -26,6 +25,16 @@ class Database
     public function fetch($res)
     {
         return mysqli_fetch_assoc($res);
+    }
+
+    public function get($res)
+    {
+        return mysqli_fetch_row($res);
+    }
+
+    public function last_id()
+    {
+        return mysqli_insert_id($this->connection);
     }
 
 }

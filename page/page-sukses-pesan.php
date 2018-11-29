@@ -1,5 +1,10 @@
 <?php
 require_once __DIR__."/../config/config.php";
+
+if (!cekLoginAuth())
+{
+   redirectPage("page/page-register.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +43,7 @@ require_once __DIR__."/../config/config.php";
         <tr>
           <td style="width: 40%; padding-left: 45px;" align="left">Nama Pengguna</td>
           <td style="width: 5%;" align="center">:</td>
-          <td align="center"><?= getLoginAuth()->nama; ?></td>
+          <td align="center"><?= $_SESSION["user_nama"]; ?></td>
         </tr>
         <tr>
           <td colspan="3" style="height: 20px;"></td>
@@ -46,7 +51,7 @@ require_once __DIR__."/../config/config.php";
         <tr>
           <td style="width: 40%; padding-left: 45px;" align="left">Alamat</td>
           <td style="width: 5%;" align="center">:</td>
-          <td align="center"><?= getLoginAuth()->alamat; ?></td>
+          <td align="center"><?= $_SESSION["user_info"]["alamat"]; ?></td>
         </tr>
         <tr>
           <td colspan="3" style="height: 20px;"></td>
@@ -54,7 +59,7 @@ require_once __DIR__."/../config/config.php";
         <tr>
           <td style="width: 40%; padding-left: 45px;" align="left">Nomor Telepon</td>
           <td style="width: 5%;" align="center">:</td>
-          <td align="center"><?= getLoginAuth()->no_hp; ?></td>
+          <td align="center"><?= $_SESSION["user_info"]["alamat"]; ?></td>
         </tr>
         <tr>
           <td colspan="3" style="height: 20px;"></td>
@@ -79,7 +84,7 @@ require_once __DIR__."/../config/config.php";
         <tr>
           <td style="width: 40%; padding-left: 45px;" align="left">Paket Laundry</td>
           <td style="width: 5%;" align="center">:</td>
-          <td align="center"><?= ucfirst($_POST["paket"]); ?></td>
+          <td align="center"><?= $db->query("SELECT `nama_paket` FROM `vivalo_paket` WHERE `kd_paket` = '".$_POST["paket"]."'")->fetch_assoc()["nama_paket"]; ?></td>
         </tr>
         <tr>
           <td colspan="3" style="height: 20px;"></td>
@@ -93,7 +98,7 @@ require_once __DIR__."/../config/config.php";
       </table>
       <div align="center" style="width: 100%; margin-top: -20px;">
         <button class="cta_btn" style="font-size: 30pt;width: 20%; margin: 0px;">Cetak</button>
-        <button class="cta_btn" style="font-size: 30pt;width: 20%; margin: 0px;">Oke</button>
+        <button class="cta_btn" style="font-size: 30pt;width: 20%; margin: 0px;" onclick="document.location='<?= APP_URL ?>page/page-customer.php'">Oke</button>
       </div>
       <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
     </div>
