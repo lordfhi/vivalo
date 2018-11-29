@@ -4,7 +4,6 @@ require_once __DIR__."/../../config/config.php";
 $nama = $_POST["nama"];
 $user = $_POST["username"];
 $pass = md5($_POST["password"]);
-
 /**
  * Cek username belum terdaftar
  */

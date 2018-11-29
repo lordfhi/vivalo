@@ -6,7 +6,6 @@ if (!cekLoginAuth())
    redirectPage("page/page-register.php");
 }
 ?>
-
 <head>
 
   <meta charset="utf-8">
