@@ -1,11 +1,10 @@
-<?php 
-session_start();
+<?php
+require_once __DIR__."/../../config/config.php";
 
-
-if (cekLoginAuth != 1) {
-  header("location: ../page-register.php?pesan=belum_login");
+if (!cekLoginAuth())
+{
+   redirectPage("page/page-register.php");
 }
-
 ?>
 <head>
 

@@ -6,7 +6,7 @@ require_once __DIR__."/../config/config.php";
  */
 if (cekLoginAuth())
 {
-   header("location: ".$app_url.cekLoginUrl());
+   redirectPage(cekLoginUrl());
 }
 ?>
 
@@ -31,7 +31,9 @@ if (cekLoginAuth())
       <div class="main-title">
          <?php 
          if(isset($_GET['pesan'])){
-            if($_GET['pesan'] == "gagal"){
+            if($_GET['pesan'] == "exists"){
+               echo "<center><h3>Daftar gagal! username telah terdaftar!</h3></center>";
+            } else if($_GET['pesan'] == "gagal"){
                echo "<center><h3>Login gagal! username dan password salah!</h3></center>";
             }else if($_GET['pesan'] == "logout"){
                echo "<center><h3>Anda telah berhasil logout</h3></center>";

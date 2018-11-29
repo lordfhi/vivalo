@@ -1,16 +1,26 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <?php 
 include 'attr_head.php';
 ?>
+<style type="text/css">
+  .dataTables_length, .dataTables_filter {
+    display: none;
+  }
+</style>
     <body>
+      <?php
+      if (isset($_GET["pesan"]))
+      {
+        if ($_GET["pesan"] == "buat_oke") echo "<script>alert('Berhasil menambahkan data paket.')</script>";
+        if ($_GET["pesan"] == "data_ada") echo "<script>alert('Gagal menambahkan data paket, data sudah ada!')</script>";
+      }
+      ?>
       <div class="container-scroller">
         <!-- partial:partials/_navbar.html -->
       <?php
        include 'navbar.php';
-
         ?>
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
@@ -23,27 +33,29 @@ include 'attr_head.php';
               <div class="row">
                <div class="container-fluid">
                  <div class="col-md-12">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                      Tambah Paket
+                    </button>
                     <table id="example" class="display" style="width:100%">
                         <thead>
                             <tr>
-                                <th>ID Konsumen</th>
-                                <th>Nama Konsumen</th>
-                                <th>Alamat</th>
-                                <th>Nomer Telepon</th>
+                                <th style="width: 15%;">Kode Paket</th>
+                                <th>Nama Paket</th>
+                                <th>Harga Paket</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($db->query("SELECT * FROM `vivalo_konsumen` WHERE 1")->fetch_all() as $konsumen): ?>
+                            <?php foreach($db->query("SELECT * FROM `vivalo_paket` WHERE 1")->fetch_all() as $paket): ?>
                             <tr>
-                                <td><?= $konsumen[0] ?></td>
-                                <td><?= $konsumen[1] ?></td>
-                                <td><?= $konsumen[2] ?></td>
-                                <td><?= $konsumen[3] ?></td>
+                                <td align="center"><?= $paket[0] ?></td>
+                                <td><?= $paket[1] ?></td>
+                                <td><?= $paket[2] ?></td>
                             </tr>
                             <?php endforeach ?>
                         </tbody>
                         
                     </table>
+
                  </div>
                </div>
               </div>
@@ -70,6 +82,40 @@ include 'attr_head.php';
         <!-- page-body-wrapper ends -->
       </div>
       <!-- container-scroller -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Paket</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="<?= APP_URL ?>page/action/tambah_paket.php" method="post" id="formTambahPaket">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Kode Paket :</label>
+            <input type="text" class="form-control" required="" id="recipient-name" name="kode_paket">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Nama Paket :</label>
+            <input type="text" class="form-control" required="" id="recipient-name" name="nama_paket">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Harga Paket :</label>
+            <input type="text" class="form-control" required="" id="recipient-name" name="harga_paket">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="$('#formTambahPaket').submit();">Simpan</button>
+      </div>
+    </div>
+  </div>
+</div>
 
       <!-- plugins:js -->
       <script src="../../asset/vendors/js/vendor.bundle.base.js"></script>

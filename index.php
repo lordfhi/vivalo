@@ -24,7 +24,7 @@ require_once __DIR__."/config/config.php";
             <li><a href="page/page-profilecostumer.php">Profil</a></li>
             <li><a href="page/page-pengaturan.php">Pengaturan</a></li>
             <li><a href="#">Tentang</a></li>
-            <li><a href="#">Keluar</a></li>
+            <?= (cekLoginAuth() ? "<li><a href='action/logout.php'>Keluar</a></li>" : "<li><a href='page-register.php'>Masuk</a></li>") ?>
           </ul>
         </nav>
       </div>
@@ -71,45 +71,6 @@ require_once __DIR__."/config/config.php";
         <h3>Ayo Mulai!</h3>
         <p>Tekan tombol dibawah ini untuk mulai pesanan.</p>
         <a href="#" class="cta_btn">PESAN</a>
-      </section>
-    </div>
-  </section><!-- call_to_action End -->
-
-  <section class="call_to_action">
-    <div class="" style="padding-top: 100px;">
-      <section class="">
-        <form method="post" class="" action="<?= $app_url."/page/action/pesan.php" ?>" style="font-size: 30pt; padding-left: 15%;" id="formPesanan">
-          <table style="width: 80%;" border="1">
-            <tr>
-              <td style="width: 30%;">Tanggal Pesan</td>
-              <td style="width: 5%">:</td>
-              <td style="width: 45%"><input type="text" name="datepicker" id="datepicker" style="font-size: 30pt; width: 100%;"></td>
-            </tr>
-            <tr>
-              <td colspan="3">&nbsp;</td>
-            </tr>
-            <tr>
-              <td style="width: 15%;">Paket</td>
-              <td style="width: 5%">:</td>
-              <td style="width: 45%; padding-left: 8%;" align="left"><input type="checkbox" name="paket" value="kilat" style="transform: scale(2);">&nbsp;&nbsp;&nbsp;Kilat <small style="font-size: 15pt;">~ 1kg : Rp 30.000</small></td>
-            </tr>
-            <tr>
-              <td style="width: 15%;"></td>
-              <td style="width: 5%"></td>
-              <td style="width: 45%; padding-left: 8%;" align="left"><input type="checkbox" name="paket" value="standart" style="transform: scale(2);">&nbsp;&nbsp;&nbsp;Standart <small style="font-size: 15pt;">~ 1kg : Rp 15.000</small></td>
-            </tr>
-            <tr>
-              <td colspan="3">&nbsp;</td>
-            </tr>
-            <tr>
-              <td colspan="2" align="center">
-              </td>
-              <td align="center">
-                <a href="#" class="cta_btn" style="margin: 0px; width: 70%;" onclick="$('#formPesanan').submit();">KIRIM</a>
-              </td>
-            </tr>
-          </table>
-        </form>
       </section>
     </div>
   </section><!-- call_to_action End -->
