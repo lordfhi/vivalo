@@ -12,7 +12,8 @@ if ($saveAct)
 {
 
 	// Simpan ke DB laporan pemasukan
-	$db->query("INSERT INTO `vivalo_laporan_pemasukan`(`kd_pemesanan`, `status`) VALUES ('".$db->last_id()."','??')");
+	$kd_pemesanan = $db->last_id();
+	$db->query("INSERT INTO `vivalo_laporan_pemasukan`(`kd_pemesanan`, `status`) VALUES ('$kd_pemesanan','??')");
 
 	include_once realpath(__DIR__."/../")."/page-sukses-pesan.php";
 }

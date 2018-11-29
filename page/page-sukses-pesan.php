@@ -97,7 +97,7 @@ if (!cekLoginAuth())
         </tr>
       </table>
       <div align="center" style="width: 100%; margin-top: -20px;">
-        <button class="cta_btn" style="font-size: 30pt;width: 20%; margin: 0px;">Cetak</button>
+        <button class="cta_btn" style="font-size: 30pt;width: 20%; margin: 0px;" onclick="document.location='<?= APP_URL ?>page/action/cetak-pesanan.php?kd_pemesanan=<?= $kd_pemesanan ?>';">Cetak</button>
         <button class="cta_btn" style="font-size: 30pt;width: 20%; margin: 0px;" onclick="document.location='<?= APP_URL ?>page/page-customer.php'">Oke</button>
       </div>
       <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
