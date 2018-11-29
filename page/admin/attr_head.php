@@ -1,4 +1,12 @@
+<?php 
+session_start();
 
+
+if (cekLoginAuth != 1) {
+  header("location: ../page-register.php?pesan=belum_login");
+}
+
+?>
 <head>
 
   <meta charset="utf-8">

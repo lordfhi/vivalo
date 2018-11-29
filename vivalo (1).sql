@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2018 at 08:43 AM
+-- Generation Time: Nov 28, 2018 at 12:53 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -116,6 +116,14 @@ CREATE TABLE `vivalo_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `vivalo_user`
+--
+
+INSERT INTO `vivalo_user` (`id_user`, `nama`, `no_hp`, `alamat`, `username`, `password`, `level`) VALUES
+(1, 'Luthfi Ramadan', 0, '', 'upi', '98db0b07bba92340ab23fdde110814c1', '1'),
+(2, 'a', 0, '', 'a', '0cc175b9c0f1b6a831c399e269772661', '3');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -200,6 +208,12 @@ ALTER TABLE `vivalo_pembelian`
 --
 ALTER TABLE `vivalo_pemesanan`
   MODIFY `kd_pemesanan` int(5) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `vivalo_user`
+--
+ALTER TABLE `vivalo_user`
+  MODIFY `id_user` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

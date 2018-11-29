@@ -35,7 +35,9 @@ if (cekLoginAuth())
                echo "<center><h3>Login gagal! username dan password salah!</h3></center>";
             }else if($_GET['pesan'] == "logout"){
                echo "<center><h3>Anda telah berhasil logout</h3></center>";
-            }else if($_GET['pesan'] == "belum_login"){
+            }else if($_GET['pesan'] == "berhasil"){
+               echo "<center><h3>Anda berhasil register</h3></center>";
+             }else if($_GET['pesan'] == "belum_login"){
                echo "<center><h3>Anda harus login untuk mengakses halaman admin</h3></center>";
             }
          }
@@ -48,8 +50,8 @@ if (cekLoginAuth())
             <div id="login-inputs">
                 <div id="form-container-log">
                   <form action="action/login.php" method="post">
-                  <input id="username" class="login-inputs" name="username" type="text" placeholder='Nama Pengguna'>
-                  <input id="password" class="login-inputs" name="password" type="password" placeholder='Kata Sandi'>
+                  <input id="username" class="login-inputs" name="username" type="text" placeholder='Nama Pengguna' required="required">
+                  <input id="password" class="login-inputs" name="password" type="password" placeholder='Kata Sandi' required="required">
                   <button class="btn-log">MASUK</button>
                   </form>
               </div>
@@ -65,10 +67,10 @@ if (cekLoginAuth())
             <h4>Belum punya akun?</h4>
             <div id="form-container">
 	            <form method="post" action="action/register.php">
-	               <input id="full-name" class="signup-inputs" name="nama" type="text" placeholder='Nama Pengguna'>
-	               <input id="Username" class="signup-inputs" type="username" name="username" placeholder='Username'>
-	               <input id="password" class="signup-inputs" type="password" name="password" placeholder='Kata Sandi'>
-	               <button id='btn-regis'>OKE</button>
+	               <input id="full-name" class="signup-inputs" name="nama" type="text" placeholder='Nama Pengguna' required="required">
+	               <input id="Username" class="signup-inputs" type="username" name="username" placeholder='Username' required="required">
+	               <input id="password" class="signup-inputs" type="password" name="password" placeholder='Kata Sandi' required="required">
+	               <button id='btn-regis' class="btn-log">DAFTAR</button>
 	            </form>
 	        </div>
 			<button id="signup" class="btn-daftar">DAFTAR</button>

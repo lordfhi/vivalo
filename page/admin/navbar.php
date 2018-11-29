@@ -17,7 +17,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
 
-                  <a class="dropdown-item">
+                  <a class="dropdown-item" href="../action/logout.php">
                     Sign Out
                   </a>
                 </div>
