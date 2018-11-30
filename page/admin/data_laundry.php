@@ -23,39 +23,32 @@ include 'attr_head.php';
               <div class="row">
                <div class="container-fluid">
                  <div class="col-md-12">
-                    <table id="example" class="display" style="width:100%">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                <th>No</th>
+                                
                                 <th>ID Konsumen</th>
                                 <th>Kode Pemesanan</th>
                                 <th>Jumlah Laundry</th>
                                 <th>Kode Paket</th>
                                 <th>Jumlah Harga</th>
+                                <th>Tanggal Pesan</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach($db->query("SELECT * FROM `vivalo_pemesanan`")->fetch_all() as $konsumen): ?>
                             <tr>
-                                <td>1</td>
-                                <td>33</td>
-                                <td>KP-32</td>
-                                <td>30</td>
-                                <td>KPKT-9</td>
-                                <td>Rp.100.000.000</td>
-                                <td><button class="btn btn-success">OKE</button></td>
+                                <td><?= $konsumen[0] ?></td>
+                                <td><?= $konsumen[1] ?></td>
+                                <td><?= $konsumen[4] ?></td>
+                                <td><?= $konsumen[2] ?></td>
+                                <td><?= $konsumen[5] ?></td>
+                                <td><?= $konsumen[3] ?></td>
+                                <td>pending</td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>32</td>
-                                <td>KP-31</td>
-                                <td>31</td>
-                                <td>KPKT-10</td>
-                                <td>Rp.30.000.000</td>
-                                <td><button class="btn btn-warning">PENDING</button></td>
-                            </tr>
+                            <?php endforeach ?>
                         </tbody>
-                        
                     </table>
                  </div>
                </div>

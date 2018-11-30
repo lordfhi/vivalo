@@ -16,7 +16,9 @@ if (!cekLoginAuth())
   <link rel="stylesheet" href="../../asset/vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="../../asset/vendors/css/vendor.bundle.addons.css">
 
+
   <link rel="stylesheet" href="../../asset/css/admincss.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../../asset/images/favicon.png" />

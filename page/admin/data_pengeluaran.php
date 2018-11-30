@@ -22,10 +22,10 @@ include 'attr_head.php';
               <div class="row">
                <div class="container-fluid">
                  <div class="col-md-12">
-                    <table id="example" class="display" style="width:100%">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                <th>No</th>
+                          
                                 <th>Kode Pembelian</th>
                                 <th>Kode Barang</th>
                                 <th>Nama Barang</th>
@@ -34,35 +34,17 @@ include 'attr_head.php';
                                 <th>Tanggal Pembelian</th>
                             </tr>
                         </thead>
-                        <tbody>
+                         <tbody>
+                            <?php foreach($db->query("SELECT kd_pembelian, vivalo_pembelian.kd_barang, total_harga, jumlah_barang, date, vivalo_kebutuhan.nama_barang FROM `vivalo_pembelian` JOIN vivalo_kebutuhan ON vivalo_pembelian.kd_barang = vivalo_kebutuhan.kd_barang")->fetch_all() as $konsumen): ?>
                             <tr>
-                                <td>1</td>
-                                <td>KPN-100</td>
-                                <td>KB-213</td>
-                                <td>Detergen 1</td>
-                                <td>Rp.1.000.000</td>
-                                <td>Rp.1.000.000</td>
-                                <td>2018/10/11</td>
+                                <td><?= $konsumen[0] ?></td>
+                                <td><?= $konsumen[1] ?></td>
+                                <td><?= $konsumen[5] ?></td>
+                                <td><?= $konsumen[3] ?></td>
+                                <td><?= $konsumen[2] ?></td>
+                                <td><?= $konsumen[4] ?></td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>KPN-200</td>
-                                <td>KB-213</td>
-                                <td>Detergen 2</td>
-                                <td>Rp.3.000.000</td>
-                                <td>Rp.3.000.000</td>
-                                <td>2018/11/11</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>KPN-300</td>
-                                <td>KB-313</td>
-                                <td>Detergen 3</td>
-                                <td>Rp.1.000.000</td>
-                                <td>Rp.1.000.000</td>
-                                <td>2018/12/11</td>
-                            </tr>
-                           
+                            <?php endforeach ?>
                         </tbody>
                         
                     </table>
