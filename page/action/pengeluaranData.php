@@ -1,28 +1,25 @@
+<table border="1">
+	<thead>
+		<tr>
 
-	<table border="1">
-		<tr>
-			<th>No</th>
 			<th>Kode Pembelian</th>
-			<th>Tanggal Pembelian</th>
-			<th>Jumlah Barang</th>
+			<th>Kode Barang</th>
+			<th>Nama Barang</th>
+			<th>Harga Barang</th>
 			<th>Total Harga</th>
-			<th>Status</th>
+			<th>Tanggal Pembelian</th>
 		</tr>
-		<?php 
-		require_once __DIR__."/../../config/config.php";
-		$data = $db->query("SELECT vivalo_laporan_pengeluaran.kd_pembelian, vivalo_pembelian.date, vivalo_pembelian.jumlah_barang, vivalo_pembelian.total_harga, vivalo_laporan_pengeluaran.status FROM `vivalo_laporan_pengeluaran` JOIN vivalo_pembelian ON vivalo_laporan_pengeluaran.kd_pembelian = vivalo_pembelian.kd_pembelian");
-		$no = 1;
-		while($d = $db->fetch($data)){
-		?>
+	</thead>
+	<tbody>
+		<?php foreach($db->query("SELECT kd_pembelian, vivalo_pembelian.kd_barang, total_harga, jumlah_barang, date, vivalo_kebutuhan.nama_barang FROM `vivalo_pembelian` JOIN vivalo_kebutuhan ON vivalo_pembelian.kd_barang = vivalo_kebutuhan.kd_barang")->fetch_all() as $konsumen): ?>
 		<tr>
-			<td><?php echo $no++; ?></td>
-			<td><?php echo $d['vivalo_laporan_pengeluaran.kd_pembelian']; ?></td>
-			<td><?php echo $d['vivalo_pembelian.date']; ?></td>
-			<td><?php echo $d['vivalo_pembelian.jumlah_barang']; ?></td>
-			<td><?php echo $d['vivalo_pembelian.total_harga']; ?></td>
-			<td>x</td>
+			<td><?= $konsumen[0] ?></td>
+			<td><?= $konsumen[1] ?></td>
+			<td><?= $konsumen[5] ?></td>
+			<td><?= $konsumen[3] ?></td>
+			<td><?= $konsumen[2] ?></td>
+			<td><?= $konsumen[4] ?></td>
 		</tr>
-		<?php 
-		}
-		?>
-	</table>
+	<?php endforeach ?>
+</tbody>
+</table>
