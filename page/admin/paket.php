@@ -42,6 +42,7 @@ include 'attr_head.php';
                                 <th style="width: 15%;">Kode Paket</th>
                                 <th>Nama Paket</th>
                                 <th>Harga Paket</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,6 +51,7 @@ include 'attr_head.php';
                                 <td align="center"><?= $paket[0] ?></td>
                                 <td><?= $paket[1] ?></td>
                                 <td><?= $paket[2] ?></td>
+                                <td><a href="edit_paket.php?kd_paket=<?php echo  $paket[0]; ?>" class="btn btn-warning">Edit</a>&nbsp;<a href="hapus_paket.php?kd_paket=<?php echo  $paket[0]; ?>" class="btn btn-danger">Hapus</a></td>
                             </tr>
                             <?php endforeach ?>
                         </tbody>

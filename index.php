@@ -70,7 +70,7 @@ require_once __DIR__."/config/config.php";
       <section class="cta_desc">
         <h3>Ayo Mulai!</h3>
         <p>Tekan tombol dibawah ini untuk mulai pesanan.</p>
-        <a href="#" class="cta_btn">PESAN</a>
+        <a href="page/page-customer.php" class="cta_btn">PESAN</a>
       </section>
     </div>
   </section><!-- call_to_action End -->

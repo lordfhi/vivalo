@@ -50,7 +50,7 @@ include 'attr_head.php';
                                 <td>Rp <?= $konsumen[6] ?></td>
                                 <td>Rp <?= ($konsumen[3] * $konsumen[6]) ?></td>
                                 <td><?= $konsumen[4] ?></td>
-                                <td><a href="#" class="btn btn-warning">Edit</a>&nbsp;<a href="#" class="btn btn-danger">Hapus</a></td>
+                                <td><a href="edit_pengeluaran.php?kd_pembelian=<?php echo $konsumen['0']; ?>" class="btn btn-warning">Edit</a>&nbsp;<a href="hapus_pengeluaran.php?kd_pembelian=<?php echo $konsumen['0']; ?>" class="btn btn-danger">Hapus</a></td>
                             </tr>
                             <?php endforeach ?>
                         </tbody>
