@@ -1,28 +1,24 @@
 
 	<table border="1">
-		<tr>
-			<th>No</th>
-			<th>Kode Pembelian</th>
-			<th>Tanggal Pembelian</th>
-			<th>Jumlah Barang</th>
-			<th>Total Harga</th>
-			<th>Status</th>
-		</tr>
-		<?php 
-		require_once __DIR__."/../../config/config.php";
-		$data = $db->query("SELECT vivalo_laporan_pengeluaran.kd_pembelian, vivalo_pembelian.date, vivalo_pembelian.jumlah_barang, vivalo_pembelian.total_harga, vivalo_laporan_pengeluaran.status FROM `vivalo_laporan_pengeluaran` JOIN vivalo_pembelian ON vivalo_laporan_pengeluaran.kd_pembelian = vivalo_pembelian.kd_pembelian");
-		$no = 1;
-		while($d = $db->fetch($data)){
-		?>
-		<tr>
-			<td><?php echo $no++; ?></td>
-			<td><?php echo $d['vivalo_laporan_pengeluaran.kd_pembelian']; ?></td>
-			<td><?php echo $d['vivalo_pembelian.date']; ?></td>
-			<td><?php echo $d['vivalo_pembelian.jumlah_barang']; ?></td>
-			<td><?php echo $d['vivalo_pembelian.total_harga']; ?></td>
-			<td>x</td>
-		</tr>
-		<?php 
-		}
-		?>
+        <tr>            
+            <th>Kode Pemesanan</th>
+            <th>Konsumen</th>
+            <th>Jumlah Laundry</th>
+            <th>Kode Paket</th>
+            <th>Jumlah Harga</th>
+            <th>Tanggal Pesan</th>
+            <th>Status</th>
+        </tr>
+
+        <?php foreach($db->query("SELECT * FROM `vivalo_pemesanan`")->fetch_all() as $konsumen): ?>
+        <tr>
+            <td><?= $konsumen[0] ?></td>
+            <td><?= ucfirst($db->query("SELECT * FROM `vivalo_konsumen` WHERE `id_konsumen` = '".$konsumen[1]."'")->fetch_assoc()["nama_konsumen"]) ?></td>
+            <td><?= $konsumen[4] ?> kg</td>
+            <td><?= $db->query("SELECT * FROM `vivalo_paket` WHERE `kd_paket` = '".$konsumen[2]."'")->fetch_assoc()["nama_paket"] ?> (Rp <?= $db->query("SELECT * FROM `vivalo_paket` WHERE `kd_paket` = '".$konsumen[2]."'")->fetch_assoc()["harga_paket"] ?>)</td>
+            <td>Rp <?= ($konsumen[4] * $db->query("SELECT * FROM `vivalo_paket` WHERE `kd_paket` = '".$konsumen[2]."'")->fetch_assoc()["harga_paket"]) ?></td>
+            <td><?= $konsumen[3] ?></td>
+            <td><?= $db->query("SELECT * FROM `vivalo_laporan_pemasukan` WHERE `kd_pemesanan` = '".$konsumen[0]."'")->fetch_assoc()["status"] ?></td>
+        </tr>
+        <?php endforeach ?>
 	</table>

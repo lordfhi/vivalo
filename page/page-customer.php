@@ -26,7 +26,7 @@ if (!cekLoginAuth())
 				<a href="#"><img src="../asset/img/yes.png" class="h_logo" alt="" title="VIVALO"></a>
 				<nav>
 					<ul class="main_nav">
-						<li class="current"><a href="../index.php">Halaman Utama</a></li>
+						<li class="current"><a href="<?= (cekLoginAuth() ? APP_URL."page/page-customer.php" : APP_URL."index.php") ?>">Halaman Utama</a></li>
 						<li><a href="page-profilecostumer.php">Profil</a></li>
 						<li><a href="page-pengaturan.php">Pengaturan</a></li>
 						<li><a href="#">Tentang</a></li>
