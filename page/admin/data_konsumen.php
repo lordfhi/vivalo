@@ -23,7 +23,7 @@ include 'attr_head.php';
               <div class="row">
                <div class="container-fluid">
                  <div class="col-md-12">
-                    <table id="example" class="display" style="width:100%">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
                                 <th>ID Konsumen</th>

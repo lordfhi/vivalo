@@ -89,7 +89,7 @@ if (!cekLoginAuth())
             <tr>
               <td style="width: 15%;"><?= ($key == 0 ? "Paket" : NULL) ?></td>
               <td style="width: 5%">:</td>
-              <td style="width: 45%; padding-left: 8%;" align="left"><input type="checkbox" name="paket" value="<?= $paket[0] ?>" style="transform: scale(2);">&nbsp;&nbsp;&nbsp;<?= $paket[1] ?> <small style="font-size: 15pt;">~ 1kg : Rp <?= $paket[2] ?></small></td>
+              <td style="width: 45%; padding-left: 8%;" align="left"><input type="radio" name="paket" value="<?= $paket[0] ?>" style="transform: scale(2);">&nbsp;&nbsp;&nbsp;<?= $paket[1] ?> <small style="font-size: 15pt;">~ 1kg : Rp <?= $paket[2] ?></small></td>
             </tr>
             <?php endforeach ?>
             <tr>

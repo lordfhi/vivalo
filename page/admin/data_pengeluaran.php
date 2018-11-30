@@ -21,59 +21,83 @@ include 'attr_head.php';
 
               <div class="row">
                <div class="container-fluid">
+                  <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal">+ Add Data</button><br><br>
                  <div class="col-md-12">
-                    <table id="example" class="display" style="width:100%">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%;padding-top: 10px;">
                         <thead>
                             <tr>
-                                <th>No</th>
+                          
                                 <th>Kode Pembelian</th>
                                 <th>Kode Barang</th>
                                 <th>Nama Barang</th>
                                 <th>Harga Barang</th>
                                 <th>Total Harga</th>
                                 <th>Tanggal Pembelian</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
+                         <tbody>
+                            <?php foreach($db->query("SELECT kd_pembelian, vivalo_pembelian.kd_barang, total_harga, jumlah_barang, date, vivalo_kebutuhan.nama_barang FROM `vivalo_pembelian` JOIN vivalo_kebutuhan ON vivalo_pembelian.kd_barang = vivalo_kebutuhan.kd_barang")->fetch_all() as $konsumen): ?>
                             <tr>
-                                <td>1</td>
-                                <td>KPN-100</td>
-                                <td>KB-213</td>
-                                <td>Detergen 1</td>
-                                <td>Rp.1.000.000</td>
-                                <td>Rp.1.000.000</td>
-                                <td>2018/10/11</td>
+                                <td><?= $konsumen[0] ?></td>
+                                <td><?= $konsumen[1] ?></td>
+                                <td><?= $konsumen[5] ?></td>
+                                <td><?= $konsumen[3] ?></td>
+                                <td><?= $konsumen[2] ?></td>
+                                <td><?= $konsumen[4] ?></td>
+                                <td><a href="#" class="btn btn-warning">Edit</a>&nbsp;<a href="#" class="btn btn-danger">Hapus</a></td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>KPN-200</td>
-                                <td>KB-213</td>
-                                <td>Detergen 2</td>
-                                <td>Rp.3.000.000</td>
-                                <td>Rp.3.000.000</td>
-                                <td>2018/11/11</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>KPN-300</td>
-                                <td>KB-313</td>
-                                <td>Detergen 3</td>
-                                <td>Rp.1.000.000</td>
-                                <td>Rp.1.000.000</td>
-                                <td>2018/12/11</td>
-                            </tr>
-                           
+                            <?php endforeach ?>
                         </tbody>
                         
                     </table>
                  </div>
                </div>
               </div>
-
-
-
-
             </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Paket</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="<?= APP_URL ?>page/action/tambah_pengeluaran.php" method="post" id="formTambahPaket">
+             <div class="form-group">
+             <label for="recipient-name" class="col-form-label">Kebutuhan :</label>
+             <select class="custom-select" id="inputGroupSelect03" name="">
+              <option selected>Choose...</option>
+              <?php foreach($db->query("SELECT * FROM `vivalo_kebutuhan` ")->fetch_all() as $pengeluaran): ?>
+             
+              <option value="<?= $pengeluaran[0] ?>"><?= $pengeluaran[1] ?>, &nbsp; Harga: <?= $pengeluaran[2] ?></option>
+            <?php endforeach?> 
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Jumlah Barang :</label>
+            <input type="text" class="form-control" required="" id="recipient-name" name="kode_paket">
+          </div>
+         
+
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Tanggal Pembelian :</label>
+           <input type="date" class="form-control" required="" name="datepicker"  >
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="$('#formTambahPaket').submit();">Simpan</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
             <!-- content-wrapper ends -->
             <!-- partial:partials/_footer.html -->
             <footer class="footer">
@@ -111,6 +135,13 @@ include 'attr_head.php';
   $(document).ready(function() {
     $('#example').DataTable();
 } );
+    $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+</script>
+
+<script type="text/javascript">
+
 </script>
 
     </body></html>
