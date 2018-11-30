@@ -73,7 +73,7 @@ if (!cekLoginAuth())
 	<br>
 
   <section class="call_to_action">
-    <div class="" style="padding-top: 100px;">
+    <div class="" style="padding-top: 50px;">
       <section class="">
         <form method="post" class="" action="<?= APP_URL ?>page/action/pesan.php" style="font-size: 30pt; padding-left: 15%;" id="formPesanan">
           <table style="width: 80%;" border="1">
@@ -92,6 +92,14 @@ if (!cekLoginAuth())
               <td style="width: 45%; padding-left: 8%;" align="left"><input type="radio" name="paket" value="<?= $paket[0] ?>" style="transform: scale(2);">&nbsp;&nbsp;&nbsp;<?= $paket[1] ?> <small style="font-size: 15pt;">~ 1kg : Rp <?= $paket[2] ?></small></td>
             </tr>
             <?php endforeach ?>
+            <tr>
+              <td colspan="3">&nbsp;</td>
+            </tr>
+            <tr>
+              <td style="width: 30%;">Jumlah Laundry (kg)</td>
+              <td style="width: 5%">:</td>
+              <td style="width: 45%"><input autocomplete="off" type="number" name="jumlah_laundry" id="jumlah_laundry" style="font-size: 30pt; width: 100%;"></td>
+            </tr>
             <tr>
               <td colspan="3">&nbsp;</td>
             </tr>
