@@ -23,24 +23,26 @@ include 'attr_head.php';
               <div class="row">
                 <?php
               $id = $_GET['kd_paket'];
-                $data = $db->query("select * from vivalo_kebutuhan where kd_paket='$id'");
-                while($d = mysqli_fetch_array($data)){
+                $data = $db->query("select * from vivalo_paket where kd_paket='$id'")->fetch_assoc();
+                
                  ?>
-               <form action="<?= APP_URL ?>page/action/update_kebutuhan.php" method="post" id="formTambahPaket">
+               <form action="<?= APP_URL ?>page/action/update_paket.php" method="post" id="formTambahPaket">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Kode Paket :</label>
-            <input type="text" class="form-control" required="" id="recipient-name" name="kode_paket" value="<?php $d['kd_paket']?>">
+            <input type="text" class="form-control" required="" id="recipient-name" name="kode_paket" value="<?= $data['kd_paket']?>">
           </div>
+               <input type="hidden" name="kd_paket" value="<?php echo $data['kd_paket']; ?>">
+
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Nama Paket :</label>
-            <input type="text" class="form-control" required="" id="recipient-name" name="nama_paket" value="<?php $d['nama_paket']?>" >
+            <input type="text" class="form-control" required="" id="recipient-name" name="nama_paket" value="<?= $data['nama_paket']?>" >
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Harga Paket :</label>
-            <input type="text" class="form-control" required="" value="<?php $d['harga_paket']?>" id="recipient-name" name="harga_paket">
+            <input type="text" class="form-control" required="" value="<?= $data['harga_paket']?>" id="recipient-name" name="harga_paket">
           </div>
+          <button type="submit" class="btn btn-warning" >Edit</button>
         </form>
-    <?php } ?>
               </div>
 
 
