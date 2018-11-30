@@ -50,6 +50,12 @@
       &nbsp;
     </li>
     <li class="nav-item">
+      <a class="nav-link" href="<?= APP_URL ?>page/admin/barang.php">
+        <i class="menu-icon mdi mdi-sticker"></i>
+        <span class="menu-title">Barang Kebutuhan</span>
+      </a>
+    </li>
+    <li class="nav-item">
       <a class="nav-link" href="<?= APP_URL ?>page/admin/paket.php">
         <i class="menu-icon mdi mdi-sticker"></i>
         <span class="menu-title">Paket</span>

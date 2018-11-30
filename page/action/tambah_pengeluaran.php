@@ -2,24 +2,17 @@
 require_once __DIR__."/../../config/config.php";
 
 //
-$kode_paket = $_POST["kode_paket"];
-$nama_paket = $_POST["nama_paket"];
-$harga_paket = $_POST["harga_paket"];
+$kd_barang = $_POST["kd_barang"];
+$jumlah_barang = $_POST["jumlah_barang"];
+$date = date("Y-m-d", strtotime($_POST["datepicker"]));
 
-// Cek kode paket
-$kodePaket = $db->query("SELECT * FROM `vivalo_paket` WHERE `kode_paket` = '$kode_paket'");
-if ($db->num_rows($kodePaket) == 0)
+// save date ke pembelian
+$pembData = $db->query("INSERT INTO `vivalo_pembelian`(`kd_barang`, `jumlah_barang`, `date`) VALUES ('$kd_barang','$jumlah_barang','$date')"); 
+if ($pembData)
 {
-	// Simpan paket
-	$actPaket = $db->query("INSERT INTO `vivalo_paket`(`kd_paket`, `nama_paket`, `harga_paket`) VALUES ('$kode_paket','$nama_paket','$harga_paket')");
-	if ($actPaket)
-	{
-		// Jika berhasil
-		redirectPage("page/admin/paket.php?pesan=buat_oke");
-	}
-}
-else
-{
-	// Kalo kode paket sudah ada
-	redirectPage("page/admin/paket.php?pesan=data_ada");
+	// simpan ke laporan
+	$kd_pembelian = $db->last_id();
+	$db->query("INSERT INTO `vivalo_laporan_pengeluaran`(`kd_pembelian`, `status`) VALUES ('$kd_pemesanan','sukses')");
+
+	redirectPage('page/admin/data_pengeluaran.php?pesan=oke');
 }

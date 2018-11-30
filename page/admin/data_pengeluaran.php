@@ -4,6 +4,13 @@
 <?php 
 include 'attr_head.php';
 ?>
+      <?php
+      if (isset($_GET["pesan"]))
+      {
+        if ($_GET["pesan"] == "oke") echo "<script>alert('Berhasil menambahkan data pengeluaran.')</script>";
+      }
+      ?>
+
     <body>
       <div class="container-scroller">
         <!-- partial:partials/_navbar.html -->
@@ -28,8 +35,7 @@ include 'attr_head.php';
                             <tr>
                           
                                 <th>Kode Pembelian</th>
-                                <th>Kode Barang</th>
-                                <th>Nama Barang</th>
+                                <th>Barang</th>
                                 <th>Harga Barang</th>
                                 <th>Total Harga</th>
                                 <th>Tanggal Pembelian</th>
@@ -37,13 +43,12 @@ include 'attr_head.php';
                             </tr>
                         </thead>
                          <tbody>
-                            <?php foreach($db->query("SELECT kd_pembelian, vivalo_pembelian.kd_barang, total_harga, jumlah_barang, date, vivalo_kebutuhan.nama_barang FROM `vivalo_pembelian` JOIN vivalo_kebutuhan ON vivalo_pembelian.kd_barang = vivalo_kebutuhan.kd_barang")->fetch_all() as $konsumen): ?>
+                            <?php foreach($db->query("SELECT kd_pembelian, vivalo_pembelian.kd_barang, total_harga, jumlah_barang, date, vivalo_kebutuhan.nama_barang, vivalo_kebutuhan.harga FROM `vivalo_pembelian` JOIN vivalo_kebutuhan ON vivalo_pembelian.kd_barang = vivalo_kebutuhan.kd_barang")->fetch_all() as $konsumen): ?>
                             <tr>
                                 <td><?= $konsumen[0] ?></td>
-                                <td><?= $konsumen[1] ?></td>
                                 <td><?= $konsumen[5] ?></td>
-                                <td><?= $konsumen[3] ?></td>
-                                <td><?= $konsumen[2] ?></td>
+                                <td>Rp <?= $konsumen[6] ?></td>
+                                <td>Rp <?= ($konsumen[3] * $konsumen[6]) ?></td>
                                 <td><?= $konsumen[4] ?></td>
                                 <td><a href="#" class="btn btn-warning">Edit</a>&nbsp;<a href="#" class="btn btn-danger">Hapus</a></td>
                             </tr>
@@ -69,7 +74,7 @@ include 'attr_head.php';
         <form action="<?= APP_URL ?>page/action/tambah_pengeluaran.php" method="post" id="formTambahPaket">
              <div class="form-group">
              <label for="recipient-name" class="col-form-label">Kebutuhan :</label>
-             <select class="custom-select" id="inputGroupSelect03" name="">
+             <select class="custom-select" id="inputGroupSelect03" name="kd_barang">
               <option selected>Choose...</option>
               <?php foreach($db->query("SELECT * FROM `vivalo_kebutuhan` ")->fetch_all() as $pengeluaran): ?>
              
@@ -79,13 +84,13 @@ include 'attr_head.php';
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Jumlah Barang :</label>
-            <input type="text" class="form-control" required="" id="recipient-name" name="kode_paket">
+            <input type="text" class="form-control" required="" id="recipient-name" name="jumlah_barang">
           </div>
          
 
           <div class="form-group">
             <label for="message-text" class="col-form-label">Tanggal Pembelian :</label>
-           <input type="date" class="form-control" required="" name="datepicker"  >
+           <input type="date" class="form-control" required="" name="datepicker">
           </div>
         </form>
       </div>
