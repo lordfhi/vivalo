@@ -5,6 +5,13 @@
 <?php 
 include 'attr_head.php';
 ?>
+      <?php
+      if (isset($_GET["pesan"]))
+      {
+        if ($_GET["pesan"] == "oke") echo "<script>alert('Berhasil memperbarui data.')</script>";
+      }
+      ?>
+
     <body>
       <div class="container-scroller">
         <!-- partial:partials/_navbar.html -->
@@ -34,6 +41,7 @@ include 'attr_head.php';
                                 <th>Jumlah Harga</th>
                                 <th>Tanggal Pesan</th>
                                 <th>Status</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,7 +53,24 @@ include 'attr_head.php';
                                 <td><?= $db->query("SELECT * FROM `vivalo_paket` WHERE `kd_paket` = '".$konsumen[2]."'")->fetch_assoc()["nama_paket"] ?> (Rp <?= $db->query("SELECT * FROM `vivalo_paket` WHERE `kd_paket` = '".$konsumen[2]."'")->fetch_assoc()["harga_paket"] ?>)</td>
                                 <td>Rp <?= ($konsumen[4] * $db->query("SELECT * FROM `vivalo_paket` WHERE `kd_paket` = '".$konsumen[2]."'")->fetch_assoc()["harga_paket"]) ?></td>
                                 <td><?= $konsumen[3] ?></td>
-                                <td><?= $db->query("SELECT * FROM `vivalo_laporan_pemasukan` WHERE `kd_pemesanan` = '".$konsumen[0]."'")->fetch_assoc()["status"] ?></td>
+                                <td><?= strtoupper($db->query("SELECT * FROM `vivalo_laporan_pemasukan` WHERE `kd_pemesanan` = '".$konsumen[0]."'")->fetch_assoc()["status"]) ?></td>
+                                <td>
+                                  <?php 
+                                  $status = $db->query("SELECT * FROM `vivalo_laporan_pemasukan` WHERE `kd_pemesanan` = '".$konsumen[0]."'")->fetch_assoc()["status"];
+                                  if ($status == "pending")
+                                  {
+                                    echo '<a href="'.APP_URL.'page/action/update-status-pesanan.php?kd_pemesanan='.$konsumen[0].'&status=diproses" class="btn btn-primary">Proses</a>';
+                                  } else
+                                  if ($status == "diproses")
+                                  {
+                                    echo '<a href="'.APP_URL.'page/action/update-status-pesanan.php?kd_pemesanan='.$konsumen[0].'&status=selesai" class="btn btn-warning">Selesi</a>';
+                                  } else
+                                  if ($status == "selesai")
+                                  {
+                                    echo '<a href="#" class="btn btn-success disabled">DONE</a>';
+                                  }
+                                  ?>
+                                </td>
                             </tr>
                             <?php endforeach ?>
                         </tbody>
