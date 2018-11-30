@@ -22,20 +22,18 @@ include 'attr_head.php';
 
               <div class="row">
                 <?php
-              $id = $_GET['kd_paket'];
-                $data = $db->query("select * from vivalo_paket where kd_paket='$id'")->fetch_assoc();
-                
+        $id = $_GET['kd_barang'];
+          $data = $db->query("select * from vivalo_kebutuhan where kd_barang='$id'")->fetch_assoc();
                  ?>
-               <form action="<?= APP_URL ?>page/action/update_paket.php" method="post" id="formTambahPaket">
-               <input type="hidden" name="kd_paket" value="<?php echo $data['kd_paket']; ?>">
-
+               <form action="<?= APP_URL ?>page/action/update_barang.php" method="post" id="formTambahPaket">
+                <input type="hidden" name="kd_barang" value="<?php echo $data['kd_barang']; ?>">
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Nama Paket :</label>
-            <input type="text" class="form-control" required="" id="recipient-name" name="nama_paket" value="<?= $data['nama_paket']?>" >
+            <label for="recipient-name" class="col-form-label">Nama Barang :</label>
+            <input type="text" class="form-control" required="" id="recipient-name" name="nama_barang" value="<?= $data['nama_barang']?>" >
           </div>
           <div class="form-group">
-            <label for="message-text" class="col-form-label">Harga Paket :</label>
-            <input type="text" class="form-control" required="" value="<?= $data['harga_paket']?>" id="recipient-name" name="harga_paket">
+            <label for="message-text" class="col-form-label">Harga Barang :</label>
+            <input type="text" class="form-control" required="" value="<?= $data['harga']?>" id="recipient-name" name="harga">
           </div>
           <button type="submit" class="btn btn-warning" >Edit</button>
         </form>

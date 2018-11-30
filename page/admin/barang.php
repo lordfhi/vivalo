@@ -42,6 +42,7 @@ include 'attr_head.php';
                                 <th style="width: 15%;">Kode Barang</th>
                                 <th>Nama Barang</th>
                                 <th>Harga Barang</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,6 +51,7 @@ include 'attr_head.php';
                                 <td align="center"><?= $barang[0] ?></td>
                                 <td><?= $barang[1] ?></td>
                                 <td><?= $barang[2] ?></td>
+                                <td><a href="edit_barang.php?kd_barang=<?php echo  $barang[0]; ?>" class="btn btn-warning">Edit</a>&nbsp;<a href="../action/hapus_barang.php?kd_barang=<?php echo  $barang[0]; ?>" class="btn btn-danger">Hapus</a></td>
                             </tr>
                             <?php endforeach ?>
                         </tbody>
