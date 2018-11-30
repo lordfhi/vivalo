@@ -21,8 +21,9 @@ include 'attr_head.php';
 
               <div class="row">
                <div class="container-fluid">
+                  <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal">+ Add Data</button><br><br>
                  <div class="col-md-12">
-                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%;padding-top: 10px;">
                         <thead>
                             <tr>
                           
@@ -32,6 +33,7 @@ include 'attr_head.php';
                                 <th>Harga Barang</th>
                                 <th>Total Harga</th>
                                 <th>Tanggal Pembelian</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                          <tbody>
@@ -43,6 +45,7 @@ include 'attr_head.php';
                                 <td><?= $konsumen[3] ?></td>
                                 <td><?= $konsumen[2] ?></td>
                                 <td><?= $konsumen[4] ?></td>
+                                <td><a href="#" class="btn btn-warning">Edit</a>&nbsp;<a href="#" class="btn btn-danger">Hapus</a></td>
                             </tr>
                             <?php endforeach ?>
                         </tbody>
@@ -51,11 +54,50 @@ include 'attr_head.php';
                  </div>
                </div>
               </div>
-
-
-
-
             </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Paket</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="<?= APP_URL ?>page/action/tambah_pengeluaran.php" method="post" id="formTambahPaket">
+             <div class="form-group">
+             <label for="recipient-name" class="col-form-label">Kebutuhan :</label>
+             <select class="custom-select" id="inputGroupSelect03" name="">
+              <option selected>Choose...</option>
+              <?php foreach($db->query("SELECT * FROM `vivalo_kebutuhan` ")->fetch_all() as $pengeluaran): ?>
+             
+              <option value="<?= $pengeluaran[0] ?>"><?= $pengeluaran[1] ?>, &nbsp; Harga: <?= $pengeluaran[2] ?></option>
+            <?php endforeach?> 
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Jumlah Barang :</label>
+            <input type="text" class="form-control" required="" id="recipient-name" name="kode_paket">
+          </div>
+         
+
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Tanggal Pembelian :</label>
+           <input type="date" class="form-control" required="" name="datepicker"  >
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="$('#formTambahPaket').submit();">Simpan</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
             <!-- content-wrapper ends -->
             <!-- partial:partials/_footer.html -->
             <footer class="footer">
@@ -93,6 +135,13 @@ include 'attr_head.php';
   $(document).ready(function() {
     $('#example').DataTable();
 } );
+    $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+</script>
+
+<script type="text/javascript">
+
 </script>
 
     </body></html>
