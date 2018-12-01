@@ -31,7 +31,9 @@ if (cekLoginAuth())
       <div class="main-title">
          <?php 
          if(isset($_GET['pesan'])){
-            if($_GET['pesan'] == "exists"){
+            if($_GET['pesan'] == "forgot"){
+               echo "<center><h3>Lupa password berhasil!!</h3></center>";
+            } else if($_GET['pesan'] == "exists"){
                echo "<center><h3>Daftar gagal! username telah terdaftar!</h3></center>";
             } else if($_GET['pesan'] == "gagal"){
                echo "<center><h3>Login gagal! username dan password salah!</h3></center>";
@@ -58,7 +60,7 @@ if (cekLoginAuth())
                   </form>
               </div>
             </div>
-            <a href="#" class='login-inputs'>Lupa Kata Sandi??</a>
+            <a href="<?= APP_URL ?>page/page-lupapassword.php" class='login-inputs'>Lupa Kata Sandi??</a>
             <button id="login" class="btn-daftar">MASUK</button>
          </div>
          <div id="divider"></div>
