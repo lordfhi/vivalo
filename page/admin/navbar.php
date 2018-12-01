@@ -17,9 +17,16 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                   <br>
+                     <?php
+        $user_info = $db->query("SELECT * FROM `vivalo_admin` WHERE `id_admin` = '".$_SESSION["user_info"]["id_admin"]."'")->fetch_assoc();
+      ?>
+                   <a class="dropdown-item" href="edit_user.php?id_admin=<?= $user_info["id_admin"] ?>">
+                    Pengaturan
+                  </a>
                   <a class="dropdown-item" href="<?= APP_URL ?>page/action/logout.php">
                     Sign Out
-                  </a>
+                  </a> 
+                 
                 </div>
               </li>
             </ul>
