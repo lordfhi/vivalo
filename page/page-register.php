@@ -69,9 +69,11 @@ if (cekLoginAuth())
             <h4>Belum punya akun?</h4>
             <div id="form-container">
 	            <form method="post" action="action/register.php">
-	               <input id="full-name" class="signup-inputs" name="nama" type="text" placeholder='Nama Pengguna' required="required">
+	               <input id="full-name" class="signup-inputs" name="nama" type="text" placeholder='Nama Konsumen' required="required">
 	               <input id="Username" class="signup-inputs" type="username" name="username" placeholder='Username' required="required"> 
-                <textarea name="alamat" class="signup-inputs" rows="3"></textarea>
+               <input  class="signup-inputs" type="text" name="alamat" placeholder='alamat' required="required"> 
+               <input  class="signup-inputs" type="text" name="no_hp" placeholder='No Hp' required="required"> 
+
 	               <input id="password" class="signup-inputs" type="password" name="password" placeholder='Kata Sandi' required="required">
 	               <button id='btn-regis' class="btn-log">DAFTAR</button>
 	            </form>
