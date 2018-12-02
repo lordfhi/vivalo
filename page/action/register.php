@@ -20,14 +20,17 @@ if ($consmData)
 	$loginData = $db->query("INSERT INTO `vivalo_users`(`id_konsumen`, `username`, `password`, `level`) VALUES ('".$db->last_id()."','$nama','$pass','3')");
 	if ($loginData)
 	{
-		// Jika berhasil
-		// Set session
-		$_SESSION["user"] = $db->fetch($db->query("SELECT * FROM `vivalo_users` WHERE `username` = '$user'"));
-		$_SESSION["user_info"] = array('nama_konsumen'=>$nama, 'alamat'=>$alamat, 'no_hp'=>$no_hp);
-		$_SESSION["user_info"] = array('nama_konsumen'=>$nama, 'alamat'=>$alamat, 'no_hp'=>$no_hp, 'id_konsumen'=>$_SESSION['user']['id_konsumen']);
-		// $_SESSION["user_nama"] = $db->fetch($db->query("SELECT * FROM `vivalo_konsumen` WHERE `id_konsumen` = '".$loginData["id_konsumen"]."'"))["nama_konsumen"];
-		$_SESSION["user_level"] = 'Konsumen';
-		$_SESSION["user_nama"] = $nama;
+		// Simpan data login ke DB
+		$loginData = $db->query("INSERT INTO `vivalo_users`(`id_konsumen`, `username`, `password`, `level`) VALUES ('".$db->last_id()."','$nama','$pass','3')");
+		if ($loginData)
+		{
+			// Jika berhasil
+			// Set session
+			$userDataLogin = $db->fetch($db->query("SELECT * FROM `vivalo_users` WHERE `username` = '$user'"));
+			$_SESSION["user"] = $userDataLogin;
+			$_SESSION["user_info"] = $db->fetch($db->query("SELECT * FROM `vivalo_konsumen` WHERE `id_konsumen` = '".$userDataLogin["id_konsumen"]."'"));
+			$_SESSION["user_nama"] = $db->fetch($db->query("SELECT * FROM `vivalo_konsumen` WHERE `id_konsumen` = '".$userDataLogin["id_konsumen"]."'"))["nama_konsumen"];
+			$_SESSION["user_level"] = "Konsumen";
 
 		// Redirect Halaman
 		redirectPage("page/page-customer.php");
@@ -37,5 +40,3 @@ if ($consmData)
 // User telah terdaftar
 redirectPage("page/page-register.php?pesan=exists");
 }
-
-// print_r($_POST);
