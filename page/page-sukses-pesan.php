@@ -59,7 +59,7 @@ if (!cekLoginAuth())
         <tr>
           <td style="width: 40%; padding-left: 45px;" align="left">Nomor Telepon</td>
           <td style="width: 5%;" align="center">:</td>
-          <td align="center"><?= $_SESSION["user_info"]["alamat"]; ?></td>
+          <td align="center"><?= $_SESSION["user_info"]["no_hp"]; ?></td>
         </tr>
         <tr>
           <td colspan="3" style="height: 20px;"></td>

@@ -6,6 +6,7 @@ if (!cekLoginAuth())
 {
    redirectPage("page/page-register.php");
 }
+$user_info = $_SESSION['user_info'];
 ?>
 
 <!DOCTYPE html>

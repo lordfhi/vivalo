@@ -95,11 +95,11 @@ if (!cekLoginAuth())
             <tr>
               <td colspan="3">&nbsp;</td>
             </tr>
-            <tr>
+            <!-- <tr>
               <td style="width: 30%;">Jumlah Laundry (kg)</td>
               <td style="width: 5%">:</td>
               <td style="width: 45%"><input autocomplete="off" type="number" name="jumlah_laundry" id="jumlah_laundry" style="font-size: 30pt; width: 100%;"></td>
-            </tr>
+            </tr> -->
             <tr>
               <td colspan="3">&nbsp;</td>
             </tr>
@@ -126,9 +126,9 @@ if (!cekLoginAuth())
 	<footer>
 		<img src="../asset/img/yoo.png" alt="" title="">
 		<nav>
-			<ul>
+			<ul><!-- 
 				<li><a href="#">Daftar Harga</a></li>
-				<li><a href="#">Kebijakan</a></li>
+				<li><a href="#">Kebijakan</a></li> -->
 			</ul>
 		</nav>
 		<hr class="footer_sp"/>

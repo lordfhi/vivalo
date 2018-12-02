@@ -5,6 +5,8 @@ if (!cekLoginAuth())
 {
    redirectPage("page/page-register.php");
 }
+
+$user_info = $_SESSION['user_info'];
 ?>
 
 <!DOCTYPE html>
@@ -41,10 +43,6 @@ if (!cekLoginAuth())
   </div>
 </header>
 
-<?php
-  $user_info = $db->query("SELECT * FROM `vivalo_konsumen` WHERE `id_konsumen` = '".$_SESSION["user_info"]["id_konsumen"]."'")->fetch_assoc();
-  $user_login = $db->query("SELECT * FROM `vivalo_users` WHERE `id_konsumen` = '".$_SESSION["user_info"]["id_konsumen"]."'")->fetch_assoc();
-?>
 
 
 <link href="https://fonts.googleapis.com/css?family=Raleway:400,800" rel="stylesheet" type="text/css">
@@ -55,7 +53,7 @@ if (!cekLoginAuth())
   <div class="profile-image"></div>
   <div class="profile-name" style="color: black !important;">
     <h2 style="color: black !important;">Hi, "<?= $user_info["nama_konsumen"] ?>"<br>
-      <span style="color: black !important;"> E-mail : <?= $user_login["email"] ?> </span>
+      <span style="color: black !important;"> E-mail : <?= (isset($user_login)) ? $user_login["email"] : ''; ?> </span>
       <span style="color: black !important;">No. Telepon : <?= $user_info["no_hp"] ?></span>
       <span style="color: black !important;">Alamat : <?= $user_info["alamat"] ?></span></h2>
   </div>
