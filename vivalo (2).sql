@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2018 at 06:45 PM
+-- Generation Time: Dec 02, 2018 at 07:43 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -31,15 +31,16 @@ SET time_zone = "+00:00";
 CREATE TABLE `vivalo_admin` (
   `id_admin` int(3) NOT NULL,
   `nama_admin` char(30) NOT NULL,
-  `no_hp` int(15) DEFAULT NULL
+  `no_hp` varchar(15) DEFAULT NULL,
+  `alamat` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `vivalo_admin`
 --
 
-INSERT INTO `vivalo_admin` (`id_admin`, `nama_admin`, `no_hp`) VALUES
-(1, 'Admin', 0);
+INSERT INTO `vivalo_admin` (`id_admin`, `nama_admin`, `no_hp`, `alamat`) VALUES
+(1, 'Rizaldi Rizal', '089900918602', 'Jl babakan Rawa Kalong RT 05/RW 08 , Curug Cimanggis Depok Jawa barat');
 
 -- --------------------------------------------------------
 
@@ -62,7 +63,9 @@ CREATE TABLE `vivalo_barang` (
 
 INSERT INTO `vivalo_barang` (`id_barang`, `kd_pemesanan`, `nama_barang`, `jumlah_berat`, `harga`, `total_harga`) VALUES
 (3, 10, 'cinta', '10', '20000', '3000000'),
-(4, 10, 'huhu', '123', '30000', '1000000');
+(4, 10, 'huhu', '123', '30000', '1000000'),
+(5, 15, 'sdsd', '123', '1000000', '3000000'),
+(6, 15, 'sjsjs', '123', '1000000', '100000000000');
 
 -- --------------------------------------------------------
 
@@ -82,7 +85,8 @@ CREATE TABLE `vivalo_kebutuhan` (
 
 INSERT INTO `vivalo_kebutuhan` (`kd_barang`, `nama_barang`, `harga`) VALUES
 (1, 'Detergen', 10000),
-(2, 'Pewangi', 20000);
+(2, 'Pewangi', 20000),
+(3, 'test', 100000);
 
 -- --------------------------------------------------------
 
@@ -172,7 +176,10 @@ CREATE TABLE `vivalo_laporan_pengeluaran` (
 
 INSERT INTO `vivalo_laporan_pengeluaran` (`kd_laporan`, `kd_pembelian`, `status`) VALUES
 (1, 0, 'sukses'),
-(2, 0, 'sukses');
+(2, 0, 'sukses'),
+(3, 0, 'sukses'),
+(4, 0, 'sukses'),
+(5, 0, 'sukses');
 
 -- --------------------------------------------------------
 
@@ -227,7 +234,9 @@ CREATE TABLE `vivalo_pembelian` (
 --
 
 INSERT INTO `vivalo_pembelian` (`kd_pembelian`, `kd_barang`, `total_harga`, `jumlah_barang`, `date`) VALUES
-(2, 1, 0, 122, '2018-12-28');
+(2, 1, 0, 122, '2018-12-28'),
+(3, 3, 0, 3, '2018-12-11'),
+(5, 3, 10000000, 100, '2018-12-21');
 
 -- --------------------------------------------------------
 
@@ -397,12 +406,12 @@ ALTER TABLE `vivalo_admin`
 -- AUTO_INCREMENT for table `vivalo_barang`
 --
 ALTER TABLE `vivalo_barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `vivalo_kebutuhan`
 --
 ALTER TABLE `vivalo_kebutuhan`
-  MODIFY `kd_barang` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `kd_barang` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `vivalo_konsumen`
 --
@@ -417,7 +426,7 @@ ALTER TABLE `vivalo_laporan_pemasukan`
 -- AUTO_INCREMENT for table `vivalo_laporan_pengeluaran`
 --
 ALTER TABLE `vivalo_laporan_pengeluaran`
-  MODIFY `kd_laporan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `kd_laporan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `vivalo_manajer`
 --
@@ -432,7 +441,7 @@ ALTER TABLE `vivalo_paket`
 -- AUTO_INCREMENT for table `vivalo_pembelian`
 --
 ALTER TABLE `vivalo_pembelian`
-  MODIFY `kd_pembelian` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `kd_pembelian` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `vivalo_pemesanan`
 --
