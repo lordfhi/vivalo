@@ -72,7 +72,7 @@ if (cekLoginAuth())
             <div id="form-container">
 	            <form method="post" action="action/register.php">
 	               <input id="full-name" class="signup-inputs" name="nama" type="text" placeholder='Nama Konsumen' required="required">
-	               <input id="Username" class="signup-inputs" type="username" name="username" placeholder='Username' required="required"> 
+	               <!-- <input id="Username" class="signup-inputs" type="username" name="username" placeholder='Username' required="required">  -->
                <input  class="signup-inputs" type="text" name="alamat" placeholder='alamat' required="required"> 
                <input  class="signup-inputs" type="text" name="no_hp" placeholder='No Hp' required="required"> 
 
