@@ -22,8 +22,11 @@ if ($db->num_rows($cekData) == 0)
 		{
 			// Jika berhasil
 			// Set session
-			$_SESSION["user"] = $db->fetch($db->query("SELECT * FROM `vivalo_users` WHERE `username` = '$user'"));
-			$_SESSION["user_level"] = '3';
+			$userDataLogin = $db->fetch($db->query("SELECT * FROM `vivalo_users` WHERE `username` = '$user'"));
+			$_SESSION["user"] = $userDataLogin;
+			$_SESSION["user_info"] = $db->fetch($db->query("SELECT * FROM `vivalo_konsumen` WHERE `id_konsumen` = '".$userDataLogin["id_konsumen"]."'"));
+			$_SESSION["user_nama"] = $db->fetch($db->query("SELECT * FROM `vivalo_konsumen` WHERE `id_konsumen` = '".$userDataLogin["id_konsumen"]."'"))["nama_konsumen"];
+			$_SESSION["user_level"] = "Konsumen";
 
 			// Redirect Halaman
 			redirectPage("page/page-customer.php");
