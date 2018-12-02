@@ -4,7 +4,7 @@
       <div class="nav-link">
         <div class="user-wrapper">
           <div class="profile-image">
-            <img src="../../asset/images/faces/face1.jpg" alt="profile image">
+            <img src="../../asset/img/admin.png" alt="profile image">
           </div>
           <div class="text-wrapper">
             <p class="profile-name"><?= $_SESSION["user_nama"] ?></p>

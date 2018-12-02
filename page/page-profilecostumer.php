@@ -6,9 +6,9 @@ if (!cekLoginAuth())
    redirectPage("page/page-register.php");
 }
 
-$user_info = $_SESSION['user_info'];
+// $user_info = $_SESSION['user_info'];
+$user_info = $db->fetch($db->query("SELECT * FROM `vivalo_konsumen` WHERE `id_konsumen` = '".$_SESSION["user_info"]["id_konsumen"]."'"));
 ?>
-
 <!DOCTYPE html>
 <html lang="en" >
 
@@ -42,9 +42,31 @@ $user_info = $_SESSION['user_info'];
     </nav>
   </div>
 </header>
-
-
-
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 <link href="https://fonts.googleapis.com/css?family=Raleway:400,800" rel="stylesheet" type="text/css">
 <div id="profile-wrap">
   <div class="pulse1"></div>
@@ -53,7 +75,7 @@ $user_info = $_SESSION['user_info'];
   <div class="profile-image"></div>
   <div class="profile-name" style="color: black !important;">
     <h2 style="color: black !important;">Hi, "<?= $user_info["nama_konsumen"] ?>"<br>
-      <span style="color: black !important;"> E-mail : <?= (isset($user_login)) ? $user_login["email"] : ''; ?> </span>
+      <span style="color: black !important;"> E-mail : <?= $user_info["email"]; ?> </span>
       <span style="color: black !important;">No. Telepon : <?= $user_info["no_hp"] ?></span>
       <span style="color: black !important;">Alamat : <?= $user_info["alamat"] ?></span></h2>
   </div>

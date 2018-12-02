@@ -2,7 +2,7 @@
 session_start();
 
 /**  */
-define("APP_URL", "http://localhost:8080/vivalo_github/");
+define("APP_URL", "http://localhost/vivalo/");
 
 /** Require fungsi mysql */
 require_once __DIR__."/functions/mysqli.php";

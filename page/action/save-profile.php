@@ -17,7 +17,7 @@ if (isset($_POST["password"]) || $password !== "")
 }
 
 // update user
-$usrUpd = $db->query("UPDATE `vivalo_konsumen` SET `nama_konsumen`='$nama_konsumen',`alamat`='$alamat',`no_hp`='$no_hp' WHERE `id_konsumen` = '$id_konsumen'");
+$usrUpd = $db->query("UPDATE `vivalo_konsumen` SET `nama_konsumen`='$nama_konsumen', `email`='$email', `alamat`='$alamat',`no_hp`='$no_hp' WHERE `id_konsumen` = '$id_konsumen'");
 $lgnUpd = $db->query("UPDATE `vivalo_users` SET `email`='$email',`password`='$upd_pass' WHERE `id_konsumen` = '$id_konsumen'");
 
 redirectPage("page/page-profilecostumer.php");

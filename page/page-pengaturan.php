@@ -65,7 +65,7 @@ $user_info = $_SESSION['user_info'];
 
       <input id="full-name" class="signup-inputs" type="text" placeholder='Nama Pengguna' name="nama_konsumen" value="<?= $user_info["nama_konsumen"] ?>">
 
-      <input id="email" class="signup-inputs" type="text" placeholder='Email' name="email" value="<?= $user_login["email"] ?>">
+      <input id="email" class="signup-inputs" type="text" placeholder='Email' name="email" value="<?= $user_info["email"] ?>">
 
       <input id="no_hp" class="signup-inputs" type="text" name="no_hp" placeholder='No HP' value="<?= $user_info["no_hp"] ?>">
 
