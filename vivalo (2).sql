@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2018 at 01:31 PM
+-- Generation Time: Dec 02, 2018 at 06:45 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -40,6 +40,29 @@ CREATE TABLE `vivalo_admin` (
 
 INSERT INTO `vivalo_admin` (`id_admin`, `nama_admin`, `no_hp`) VALUES
 (1, 'Admin', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vivalo_barang`
+--
+
+CREATE TABLE `vivalo_barang` (
+  `id_barang` int(11) NOT NULL,
+  `kd_pemesanan` int(11) NOT NULL,
+  `nama_barang` varchar(255) NOT NULL,
+  `jumlah_berat` varchar(255) NOT NULL,
+  `harga` varchar(255) NOT NULL,
+  `total_harga` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `vivalo_barang`
+--
+
+INSERT INTO `vivalo_barang` (`id_barang`, `kd_pemesanan`, `nama_barang`, `jumlah_berat`, `harga`, `total_harga`) VALUES
+(3, 10, 'cinta', '10', '20000', '3000000'),
+(4, 10, 'huhu', '123', '30000', '1000000');
 
 -- --------------------------------------------------------
 
@@ -122,12 +145,14 @@ INSERT INTO `vivalo_laporan_pemasukan` (`kd_laporan`, `kd_pemesanan`, `status`) 
 (5, 5, '??'),
 (6, 6, '??'),
 (7, 7, '??'),
-(8, 8, 'pending'),
-(9, 9, 'pending'),
-(10, 10, 'pending'),
+(8, 8, 'selesai'),
+(9, 9, 'diproses'),
+(10, 10, 'diproses'),
 (11, 11, 'pending'),
 (12, 12, 'pending'),
-(13, 13, 'pending');
+(13, 13, 'diproses'),
+(14, 14, 'pending'),
+(15, 15, 'pending');
 
 -- --------------------------------------------------------
 
@@ -236,7 +261,9 @@ INSERT INTO `vivalo_pemesanan` (`kd_pemesanan`, `id_konsumen`, `kd_paket`, `date
 (10, 0, 3, '2018-12-05', 0, 1),
 (11, 6, 3, '2018-12-20', 0, 1),
 (12, 18, 2, '2018-12-11', 0, 1),
-(13, 18, 2, '2018-12-11', 0, 1);
+(13, 18, 2, '2018-12-11', 0, 1),
+(14, 0, 2, '2018-12-05', 0, 1),
+(15, 12, 2, '2018-12-05', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -289,6 +316,12 @@ INSERT INTO `vivalo_users` (`username`, `password`, `id_admin`, `email`, `id_man
 --
 ALTER TABLE `vivalo_admin`
   ADD PRIMARY KEY (`id_admin`);
+
+--
+-- Indexes for table `vivalo_barang`
+--
+ALTER TABLE `vivalo_barang`
+  ADD PRIMARY KEY (`id_barang`);
 
 --
 -- Indexes for table `vivalo_kebutuhan`
@@ -361,6 +394,11 @@ ALTER TABLE `vivalo_users`
 ALTER TABLE `vivalo_admin`
   MODIFY `id_admin` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT for table `vivalo_barang`
+--
+ALTER TABLE `vivalo_barang`
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT for table `vivalo_kebutuhan`
 --
 ALTER TABLE `vivalo_kebutuhan`
@@ -374,7 +412,7 @@ ALTER TABLE `vivalo_konsumen`
 -- AUTO_INCREMENT for table `vivalo_laporan_pemasukan`
 --
 ALTER TABLE `vivalo_laporan_pemasukan`
-  MODIFY `kd_laporan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `kd_laporan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `vivalo_laporan_pengeluaran`
 --
@@ -399,7 +437,7 @@ ALTER TABLE `vivalo_pembelian`
 -- AUTO_INCREMENT for table `vivalo_pemesanan`
 --
 ALTER TABLE `vivalo_pemesanan`
-  MODIFY `kd_pemesanan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `kd_pemesanan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- Constraints for dumped tables
 --
