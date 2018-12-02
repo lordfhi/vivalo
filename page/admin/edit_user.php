@@ -35,6 +35,11 @@ include 'attr_head.php';
             <label for="message-text" class="col-form-label">Nomor Telepon :</label>
             <input type="text" class="form-control" required="" value="<?= $data['no_hp']?>" id="recipient-name" name="no_hp">
           </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Alamat :</label>
+            <!-- <input type="text" class="form-control" required="" value="<?= $data['no_hp']?>" id="recipient-name" name="no_hp"> -->
+            <textarea name="alamat" class="form-control"></textarea>
+          </div>
           <button type="submit" class="btn btn-warning" >Edit</button>
         </form>
               </div>

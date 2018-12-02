@@ -37,9 +37,9 @@ if (isset($_GET["pesan"]))
 
                     <th>Kode Pemesanan</th>
                     <th>Konsumen</th>
-                    <th>Jumlah Laundry</th>
+                    <!-- <th>Jumlah Laundry</th> -->
                     <th>Kode Paket</th>
-                    <th>Jumlah Harga</th>
+                    <!-- <th>Jumlah Harga</th> -->
                     <th>Tanggal Pesan</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -50,9 +50,9 @@ if (isset($_GET["pesan"]))
                     <tr>
                       <td><?= $konsumen[0] ?></td>
                       <td><?= ucfirst($db->query("SELECT * FROM `vivalo_konsumen` WHERE `id_konsumen` = '".$konsumen[1]."'")->fetch_assoc()["nama_konsumen"]) ?></td>
-                      <td><?= $konsumen[4] ?> kg</td>
+                      <!-- <td><?= $konsumen[4] ?> kg</td> -->
                       <td><?= $db->query("SELECT * FROM `vivalo_paket` WHERE `kd_paket` = '".$konsumen[2]."'")->fetch_assoc()["nama_paket"] ?> (Rp <?= $db->query("SELECT * FROM `vivalo_paket` WHERE `kd_paket` = '".$konsumen[2]."'")->fetch_assoc()["harga_paket"] ?>)</td>
-                      <td>Rp <?= ($konsumen[4] * $db->query("SELECT * FROM `vivalo_paket` WHERE `kd_paket` = '".$konsumen[2]."'")->fetch_assoc()["harga_paket"]) ?></td>
+                      <!-- <td>Rp <?= ($konsumen[4] * $db->query("SELECT * FROM `vivalo_paket` WHERE `kd_paket` = '".$konsumen[2]."'")->fetch_assoc()["harga_paket"]) ?></td> -->
                       <td><?= $konsumen[3] ?></td>
                       <td><?= strtoupper($db->query("SELECT * FROM `vivalo_laporan_pemasukan` WHERE `kd_pemesanan` = '".$konsumen[0]."'")->fetch_assoc()["status"]) ?></td>
                       <td>
@@ -60,7 +60,7 @@ if (isset($_GET["pesan"]))
                         $status = $db->query("SELECT * FROM `vivalo_laporan_pemasukan` WHERE `kd_pemesanan` = '".$konsumen[0]."'")->fetch_assoc()["status"];
                         if ($status == "pending")
                         {
-                          echo '<a id="addlndry" href="#" class="btn btn-default" data-toggle="modal" data-target="#addLaundry" data-id="'.$konsumen[0].'">Tambah Data Laundry</a>';
+                          echo '<a href="#" class="btn btn-default addlndry" data-toggle="modal" data-target="#addLaundry" data-id="'.$konsumen[0].'">Tambah Data Laundry</a>';
                           echo '<a href="'.APP_URL.'page/action/update-status-pesanan.php?kd_pemesanan='.$konsumen[0].'&status=diproses" class="btn btn-primary">Proses</a>';
                         } else
                         if ($status == "diproses")
@@ -114,6 +114,10 @@ if (isset($_GET["pesan"]))
                         <div class="form-group">
                           <label>Jumlah Berat (Kg)</label>
                           <input type="number" name="jumlah_berat[]" class="form-control">
+                        </div>
+                        <div class="form-group">
+                          <label>Harga Satuan (kg)</label>
+                          <input type="number" name="harga[]" class="form-control">
                         </div>
                         <div class="form-group">
                           <label>Total Harga</label>
@@ -178,18 +182,20 @@ if (isset($_GET["pesan"]))
 <script type="text/javascript">
   $(document).ready(function() {
     var idKonsumen;
+
+    $(".addlndry").on('click', function() {
+      idKonsumen = $(this).attr('data-id');
+      console.log("asw");
+    });
     $('#example').DataTable({
       "scrollX": true
     });
-    $("#addlndry").on('click', function() {
-      idKonsumen = $(this).attr('data-id');
-    });
     $('#addLaundry').on('show.bs.modal', function (e) {
       $(this).find('.idkons').val(idKonsumen);
-      console.log(idKonsumen);
+      // console.log("asw");
     });
     $("#btn_add_barang").on('click', function() {
-      $("#add_plus").append('<hr><div class="row"> <div class="col-md-12"> <div class="form-group"> <label>Nama Barang</label> <input type="text" name="nama_barang[]" class="form-control"> </div> <div class="form-group"> <label>Jumlah Berat (Kg)</label> <input type="number" name="jumlah_berat[]" class="form-control"> </div> <div class="form-group"> <label>Total Harga</label> <input type="number" name="total_harga[]" class="form-control"> </div>` </div> </div>');
+      $("#add_plus").append('<hr><div class="row"> <div class="col-md-12"> <div class="form-group"> <label>Nama Barang</label> <input type="text" name="nama_barang[]" class="form-control"> </div> <div class="form-group"> <label>Jumlah Berat (Kg)</label> <input type="number" name="jumlah_berat[]" class="form-control"> </div> <div class="form-group"> <label>Harga Satuan (kg)</label> <input type="number" name="harga[]" class="form-control"> </div> <div class="form-group"> <label>Total Harga</label> <input type="number" name="total_harga[]" class="form-control"> </div> </div> </div>');
     });
     $(".lihat_struk").on('click', function() {
       var dataURL = $(this).attr('data-href');
@@ -198,6 +204,9 @@ if (isset($_GET["pesan"]))
       });
     });
   } );
+  $('#lihatStruk').on('hidden.bs.modal', function (e) {
+    location.reload();
+  })
 </script>
 
 </body></html>

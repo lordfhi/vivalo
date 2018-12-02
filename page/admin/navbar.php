@@ -24,7 +24,7 @@
                     Pengaturan
                   </a>
                   <a class="dropdown-item" href="<?= APP_URL ?>page/action/logout.php">
-                    Sign Out
+                    Keluar
                   </a> 
                  
                 </div>
