@@ -28,7 +28,7 @@ include 'attr_head.php';
 
               <div class="row">
                <div class="container-fluid">
-                  <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal">+ Add Data</button><br><br>
+                  <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal">+ Tambah Data Pengeluaran</button><br><br>
                  <div class="col-md-12">
                     <table id="example" class="table table-striped table-bordered" style="width:100%;padding-top: 10px;">
                         <thead>
@@ -75,7 +75,7 @@ include 'attr_head.php';
              <div class="form-group">
              <label for="recipient-name" class="col-form-label">Kebutuhan :</label>
              <select class="custom-select" id="inputGroupSelect03" name="kd_barang">
-              <option selected>Choose...</option>
+              <option selected>Pilih...</option>
               <?php foreach($db->query("SELECT * FROM `vivalo_kebutuhan` ")->fetch_all() as $pengeluaran): ?>
              
               <option value="<?= $pengeluaran[0] ?>"><?= $pengeluaran[1] ?>, &nbsp; Harga: <?= $pengeluaran[2] ?></option>

@@ -16,6 +16,8 @@
         </div>
       </div>
     </li>
+    <?php if ($_SESSION["user_level"] != "Manajer"): ?>
+      
     <li class="nav-item">
       <a class="nav-link" href="index.php">
         <i class="menu-icon mdi mdi-television"></i>
@@ -40,6 +42,7 @@
         <span class="menu-title">Data Pengeluaran</span>
       </a>
     </li>
+    <?php endif ?>
     <li class="nav-item">
       <a class="nav-link" href="laporan.php">
         <i class="menu-icon mdi mdi-sticker"></i>
@@ -49,6 +52,7 @@
     <li class="nav-item">
       &nbsp;
     </li>
+    <?php if ($_SESSION["user_level"] != "Manajer"): ?>
     <li class="nav-item">
       <a class="nav-link" href="<?= APP_URL ?>page/admin/barang.php">
         <i class="menu-icon mdi mdi-sticker"></i>
@@ -61,5 +65,6 @@
         <span class="menu-title">Paket</span>
       </a>
     </li>
+    <?php endif ?>
   </ul>
 </nav>

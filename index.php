@@ -85,9 +85,9 @@ require_once __DIR__."/config/config.php";
     <img src="asset/img/yoo.png" alt="" title="">
     <nav>
       <ul>
-        <li><a href="#">Daftar Harga</a></li>
+        <!-- <li><a href="#">Daftar Harga</a></li>
         <li><a href="#">Kebijakan</a></li>
-      </ul>
+ -->      </ul>
     </nav>
     <hr class="footer_sp"/>
     <p class="rights">© 2018 VIVALO | Viva Laundry Online - Ambil, Cuci, Antar, Puas .</p>
