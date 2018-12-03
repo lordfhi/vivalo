@@ -23,7 +23,11 @@
                 }
                 ?>
             <!-- <?= $_SESSION["user_nama"] ?></span> -->
-          <img class="img-xs rounded-circle" src="../../asset/img/admin.png" alt="Profile image">
+            <?php if ($_SESSION['user_level'] == 'Admin') { ?>
+              <img class="img-xs rounded-circle" src="../../asset/img/admin.png" alt="Profile image">
+            <?php }else{ ?>
+            <img class="img-xs rounded-circle" src="../../asset/img/manajer.png" alt="Profile image">
+          <?php } ?>
         </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
           <br>

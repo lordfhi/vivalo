@@ -4,7 +4,11 @@
       <div class="nav-link">
         <div class="user-wrapper">
           <div class="profile-image">
-            <img src="../../asset/img/admin.png" alt="profile image">
+            <?php if ($_SESSION['user_level'] == 'Admin') { ?>
+              <img src="../../asset/img/admin.png" alt="profile image">
+            <?php }else{ ?>
+              <img src="../../asset/img/manajer.png" alt="profile image">
+            <?php } ?>
           </div>
           <div class="text-wrapper">
             <?php 
