@@ -6,7 +6,8 @@ if (!cekLoginAuth())
 {
    redirectPage("page/page-register.php");
 }
-$user_info = $_SESSION['user_info'];
+// $user_info = $_SESSION['user_info'];
+$user_info = $db->fetch($db->query("SELECT * FROM `vivalo_konsumen` WHERE `id_konsumen` = '".$_SESSION["user_info"]["id_konsumen"]."'"));
 ?>
 
 <!DOCTYPE html>
@@ -52,8 +53,17 @@ $user_info = $_SESSION['user_info'];
 	
   <div id="holder">
 
-   <div id="signup-holder" style="height: 450px !important;">
-    <span> Edit Profil Anda?</span>
+   <div id="signup-holder" style="height: 750px !important;">
+    
+    <center>
+      <div class="pulse1"></div>
+      <div class="pulse2"></div>
+      <div class="profile-overlay">
+        <?php if ($user_info['file'] != ''): ?>
+            <img src="../asset/img/<?= $user_info["file"] ?>" style="border-radius: 50%;width: 230px;height: 220px;">
+        <?php endif ?>
+      </div><br>
+      <span style="text-align: center;"> Edit Profil Anda?</span></center>
 
     <form action="<?= APP_URL ?>page/action/save-profile.php" method="post" enctype="multipart/form-data">
 
@@ -71,6 +81,7 @@ $user_info = $_SESSION['user_info'];
       <input id="password" class="signup-inputs" type="password" name="password">
 
       <textarea class="signup-inputs" name="alamat" placeholder="Alamat" cols="4" style="box-shadow:1px 1px 2px rgba(0,0,0,.2);-o-box-shadow:1px 1px 2px rgba(0,0,0,.2);-ms-box-shadow:1px 1px 2px rgba(0,0,0,.2);-moz-box-shadow:1px 1px 2px rgba(0,0,0,.2);-webkit-box-shadow:1px 1px 2px rgba(0,0,0,.2);width:250px;height:50px;margin-top:20px;border:none;border-radius:0;text-indent:10px;display:none;margin-left:150px"><?= $user_info["alamat"] ?></textarea>
+      <center><br><label style="text-align: left;">Foto Profil</label></center>
       <input id="file" type="file" name="file">
       <button type="submit" id="" style="width: 150px;height: 30px;background-color: #9b59b6;color: #fff;margin: 15px 50px;display: inline-block;border: none;margin-left:200px;">Konfirmasi</button>
 

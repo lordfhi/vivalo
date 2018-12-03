@@ -90,7 +90,17 @@ include '../admin/attr_head.php';
     <span style="float: right;">Subtotal: <b>Rp <?php echo number_format($subtotal); ?></b></span><br>
   </div>
   <div class="col-md-12">
-    <span style="float: right;"> <b>Admin By <?php echo $_SESSION['user']['username'] ?></b></span>
+    <span style="float: right;"> <b>Admin By 
+      <?php 
+      if ($_SESSION['user_level'] == 'Admin') {
+        $admin = $db->fetch($db->query("SELECT * FROM `vivalo_admin` WHERE `id_admin` = '".$_SESSION["user_info"]["id_admin"]."'"));
+        echo $admin["nama_admin"];
+      }else{
+        $admin = $db->fetch($db->query("SELECT * FROM `vivalo_manajer` WHERE `id_manajer` = '".$_SESSION["user_info"]["id_manajer"]."'"));
+        echo $admin["nama_manajer"];
+      }
+      ?>
+    </b></span>
   </div>
   <div class="col-md-12">
     <span style="float: right;color: #f34f4e;font-size: 12px;"> <b>Terima Kasih Sudah Bergabung Dengan Layanan Jasa Kami</b></span>
