@@ -6,6 +6,16 @@ if (!cekLoginAuth())
    redirectPage("page/page-register.php");
 }
 ?>
+<style type="text/css">
+	#errNm1 {
+	  border: transparent;
+	  color: red;
+	}
+	#errNm2 {
+	  border: transparent;
+	  color: red;
+	}
+</style>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +25,7 @@ if (!cekLoginAuth())
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script type="text/javascript" src="../asset/js/jquery.js"></script>
+	<script src="../asset/js/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="../asset/js/main.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
@@ -75,12 +86,13 @@ if (!cekLoginAuth())
   <section class="call_to_action">
     <div class="" style="padding-top: 50px;">
       <section class="">
-        <form method="post" class="" action="<?= APP_URL ?>page/action/pesan.php" style="font-size: 30pt; padding-left: 15%;" id="formPesanan">
+        <form method="post" class="" action="<?= APP_URL ?>page/action/pesan.php" style="font-size: 25pt; padding-left: 15%;" id="formPesanan">
           <table style="width: 80%;" border="1">
             <tr>
               <td style="width: 30%;">Tanggal Pesan</td>
               <td style="width: 5%">:</td>
-              <td style="width: 45%"><input autocomplete="off" type="text" name="datepicker" id="datepicker" style="font-size: 30pt; width: 100%;"></td>
+              <td style="width: 45%"><input autocomplete="off" type="text" name="datepicker" class="datepicker" id="datepicker" style="font-size: 30pt; width: 100%;" data-error="#errNm1">
+              	<span id="errNm1" style="font-size: 15px;"></span></td>
             </tr>
             <tr>
               <td colspan="3">&nbsp;</td>
@@ -89,9 +101,11 @@ if (!cekLoginAuth())
             <tr>
               <td style="width: 15%;"><?= ($key == 0 ? "Paket" : NULL) ?></td>
               <td style="width: 5%">:</td>
-              <td style="width: 45%; padding-left: 8%;" align="left"><input type="radio" name="paket" value="<?= $paket[0] ?>" style="transform: scale(2);">&nbsp;&nbsp;&nbsp;<?= $paket[1] ?> <small style="font-size: 15pt;">~ 1kg : Rp <?= $paket[2] ?></small></td>
+              <!-- padding-left: 8%; -->
+              <td style="width: 45%;" align="left"><input data-error="#errNm2" type="radio" name="paket" id="paket" value="<?= $paket[0] ?>" style="transform: scale(2);">&nbsp;&nbsp;&nbsp;<?= $paket[1] ?> <small style="font-size: 15pt;">~ 1kg : Rp <?= $paket[2] ?></small></td>
             </tr>
             <?php endforeach ?>
+            <tr><td></td><td></td><td colspan="5"><span id="errNm2" style="font-size: 15px;"></span></td></tr>
             <tr>
               <td colspan="3">&nbsp;</td>
             </tr>
@@ -138,6 +152,24 @@ if (!cekLoginAuth())
 <script type="text/javascript">
   $( function() {
     $( "#datepicker" ).datepicker();
+    $("#formPesanan").validate({
+    	rules: {
+				datepicker: "required",
+				paket: "required"
+			},
+		messages: {
+			datepicker: "Tanggal Harus Diisi",
+			paket: "Paket Harus Diisi"
+		},
+		errorPlacement: function(error, element) {
+	      var placement = $(element).data('error');
+	      if (placement) {
+	        $(placement).append(error)
+	      } else {
+	        error.insertAfter(element);
+	      }
+	    }
+    });
   } );
 </script>
 </body>
