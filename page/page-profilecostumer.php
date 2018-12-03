@@ -36,7 +36,7 @@ $user_info = $db->fetch($db->query("SELECT * FROM `vivalo_konsumen` WHERE `id_ko
         <li><a href="<?= (cekLoginAuth() ? APP_URL."page/page-customer.php" : APP_URL."index.php") ?>">Halaman Utama</a></li>
         <li class="current"><a href="page-profilecostumer.php">Profil</a></li>
         <li><a href="page-pengaturan.php">Pengaturan</a></li>
-        <li><a href="#">Tentang</a></li>
+        <!-- <li><a href="#">Tentang</a></li> -->
         <?= (cekLoginAuth() ? "<li><a href='".APP_URL."page/action/logout.php'>Keluar</a></li>" : "<li><a href='".APP_URL."page/page-register.php'>Masuk</a></li>") ?>
       </ul>
     </nav>
