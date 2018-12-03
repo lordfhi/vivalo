@@ -12,7 +12,17 @@
 
       <li class="nav-item dropdown d-none d-xl-inline-block">
         <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-          <span class="profile-text"><?= $_SESSION["user_nama"] ?></span>
+          <span class="profile-text">
+               <?php 
+                if ($_SESSION['user_level'] == 'Admin') {
+                  $admin = $db->fetch($db->query("SELECT * FROM `vivalo_admin` WHERE `id_admin` = '".$_SESSION["user_info"]["id_admin"]."'"));
+                  echo $admin["nama_admin"];
+                }else{
+                  $admin = $db->fetch($db->query("SELECT * FROM `vivalo_manajer` WHERE `id_manajer` = '".$_SESSION["user_info"]["id_manajer"]."'"));
+                  echo $admin["nama_manajer"];
+                }
+                ?>
+            <!-- <?= $_SESSION["user_nama"] ?></span> -->
           <img class="img-xs rounded-circle" src="../../asset/img/admin.png" alt="Profile image">
         </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">

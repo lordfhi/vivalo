@@ -7,7 +7,16 @@
             <img src="../../asset/img/admin.png" alt="profile image">
           </div>
           <div class="text-wrapper">
-            <p class="profile-name"><?= $_SESSION["user_nama"] ?></p>
+            <?php 
+            if ($_SESSION['user_level'] == 'Admin') {
+              $admin = $db->fetch($db->query("SELECT * FROM `vivalo_admin` WHERE `id_admin` = '".$_SESSION["user_info"]["id_admin"]."'"));
+              echo '<p class="profile-name">'.$admin["nama_admin"].'</p>';
+            }else{
+              $admin = $db->fetch($db->query("SELECT * FROM `vivalo_manajer` WHERE `id_manajer` = '".$_SESSION["user_info"]["id_manajer"]."'"));
+              echo '<p class="profile-name">'.$admin["nama_manajer"].'</p>';
+            }
+            ?>
+            
             <div>
               <small class="designation text-muted"><?= $_SESSION["user_level"] ?></small>
               <span class="status-indicator online"></span>

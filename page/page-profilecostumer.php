@@ -71,13 +71,17 @@ $user_info = $db->fetch($db->query("SELECT * FROM `vivalo_konsumen` WHERE `id_ko
 <div id="profile-wrap">
   <div class="pulse1"></div>
   <div class="pulse2"></div>
-  <div class="profile-overlay"></div>
+  <div class="profile-overlay">
+    <?php if ($user_info['file'] != ''): ?>
+        <img src="../../asset/img/<?= $user_info["file"] ?>" style="border-radius: 50%;width: 270px;height: 280px;">
+    <?php endif ?>
+  </div>
   <div class="profile-image"></div>
-  <div class="profile-name" style="color: black !important;">
-    <h2 style="color: black !important;">Hi, "<?= $user_info["nama_konsumen"] ?>"<br>
-      <span style="color: black !important;"> E-mail : <?= $user_info["email"]; ?> </span>
-      <span style="color: black !important;">No. Telepon : <?= $user_info["no_hp"] ?></span>
-      <span style="color: black !important;">Alamat : <?= $user_info["alamat"] ?></span></h2>
+  <div class="profile-name" style="color: white !important;">
+    <h2 style="color: white    !important;">Hi, "<?= $user_info["nama_konsumen"] ?>"<br>
+      <span style="color: white    !important;"> E-mail : <?= $user_info["email"]; ?> </span>
+      <span style="color: white    !important;">No. Telepon : <?= $user_info["no_hp"] ?></span>
+      <span style="color: white    !important;">Alamat : <?= $user_info["alamat"] ?></span></h2>
   </div>
   <div class="profile-social">
     <ul>

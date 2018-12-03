@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2018 at 08:19 PM
+-- Generation Time: Dec 03, 2018 at 01:44 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -40,7 +40,7 @@ CREATE TABLE `vivalo_admin` (
 --
 
 INSERT INTO `vivalo_admin` (`id_admin`, `nama_admin`, `no_hp`, `alamat`) VALUES
-(1, 'Rizaldi Rizal', '089900918602', 'Jl babakan Rawa Kalong RT 05/RW 08 , Curug Cimanggis Depok Jawa barat');
+(1, 'Rizaldis', '08990091862', 'jekardah');
 
 -- --------------------------------------------------------
 
@@ -65,7 +65,10 @@ INSERT INTO `vivalo_barang` (`id_barang`, `kd_pemesanan`, `nama_barang`, `jumlah
 (3, 10, 'cinta', '10', '20000', '3000000'),
 (4, 10, 'huhu', '123', '30000', '1000000'),
 (5, 15, 'sdsd', '123', '1000000', '3000000'),
-(6, 15, 'sjsjs', '123', '1000000', '100000000000');
+(6, 15, 'sjsjs', '123', '1000000', '100000'),
+(7, 19, 'asdw', '5', '30000', '150000'),
+(8, 19, 'sjs', '3', '30000', '90000'),
+(9, 19, 'jj', '12', '30000', '360000');
 
 -- --------------------------------------------------------
 
@@ -99,38 +102,39 @@ CREATE TABLE `vivalo_konsumen` (
   `nama_konsumen` char(30) NOT NULL,
   `email` varchar(255) NOT NULL,
   `alamat` varchar(50) NOT NULL,
-  `no_hp` varchar(15) DEFAULT NULL
+  `no_hp` varchar(15) DEFAULT NULL,
+  `file` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `vivalo_konsumen`
 --
 
-INSERT INTO `vivalo_konsumen` (`id_konsumen`, `nama_konsumen`, `email`, `alamat`, `no_hp`) VALUES
-(1, 'User', '', '', NULL),
-(2, 'user2', '', 'asdasd', '8989'),
-(3, 'awe', '', '', NULL),
-(4, 'asdsad', '', '', NULL),
-(5, 'aweawe', '', '', NULL),
-(6, 'rizal', '', 'Jl babakan Rawa Kalong RT 05/RW 08 , Curug Cimangg', '2147483647'),
-(7, 'Rizaldi', '', 'jakarta', '2147483647'),
-(8, 'rrrr', '', 'rrrr', '2147483647'),
-(9, 'ijaldi', '', 'baraka', '2147483647'),
-(10, 'izal', '', 'jakarta', '2147483647'),
-(11, 'ija', '', 'jaaaa', '8292812'),
-(12, 'uus', '', 'uus', '08231239'),
-(13, 'iis', '', 'asdasd', '2147483647'),
-(14, 'n', '', 'n', '2147483647'),
-(15, 's', '', 's', '2147483647'),
-(16, 'xx', '', 'xx', '2147483647'),
-(17, 'nn', '', 'nn', '0'),
-(18, 'ss', '', 'ss', '08990091860'),
-(19, 'Rizaldi Rizal', '', 'sdsd', '08990091860'),
-(20, 'xxx', '', 'xxx', '01239123'),
-(21, 'sada', '', 'sada', '08990091860'),
-(22, 'mm', '', 'jajaja', '0912931923'),
-(23, 'sad', 'sada@gmail.com', 'jajaja', '09812381293'),
-(24, 'uusss', 'rizaldi354313@gmail.com', 'uusss', '08990091860');
+INSERT INTO `vivalo_konsumen` (`id_konsumen`, `nama_konsumen`, `email`, `alamat`, `no_hp`, `file`) VALUES
+(1, 'User', '', '', NULL, ''),
+(2, 'user2', '', 'asdasd', '8989', ''),
+(3, 'awe', '', '', NULL, ''),
+(4, 'asdsad', '', '', NULL, ''),
+(5, 'aweawe', '', '', NULL, ''),
+(6, 'rizal', '', 'Jl babakan Rawa Kalong RT 05/RW 08 , Curug Cimangg', '2147483647', ''),
+(7, 'Rizaldi', '', 'jakarta', '2147483647', ''),
+(8, 'rrrr', '', 'rrrr', '2147483647', ''),
+(9, 'ijaldi', '', 'baraka', '2147483647', ''),
+(10, 'izal', '', 'jakarta', '2147483647', ''),
+(11, 'ija', '', 'jaaaa', '8292812', ''),
+(12, 'uus', '', 'uus', '08231239', ''),
+(13, 'iis', '', 'asdasd', '2147483647', ''),
+(14, 'n', '', 'n', '2147483647', ''),
+(15, 's', '', 's', '2147483647', ''),
+(16, 'xx', '', 'xx', '2147483647', '343225-176-k720920.jpg'),
+(17, 'nn', '', 'nn', '0', ''),
+(18, 'ss', '', 'ss', '08990091860', ''),
+(19, 'Rizaldi Rizal', '', 'sdsd', '08990091860', ''),
+(20, 'xxx', '', 'xxx', '01239123', ''),
+(21, 'sada', '', 'sada', '08990091860', ''),
+(22, 'mm', '', 'jajaja', '0912931923', ''),
+(23, 'sad', 'sada@gmail.com', 'jajaja', '09812381293', ''),
+(24, 'uusss', 'rizaldi354313@gmail.com', 'uusss', '08990091860', '');
 
 -- --------------------------------------------------------
 
@@ -163,7 +167,11 @@ INSERT INTO `vivalo_laporan_pemasukan` (`kd_laporan`, `kd_pemesanan`, `status`) 
 (12, 12, 'pending'),
 (13, 13, 'diproses'),
 (14, 14, 'pending'),
-(15, 15, 'pending');
+(15, 15, 'pending'),
+(16, 16, 'pending'),
+(17, 17, 'pending'),
+(18, 18, 'pending'),
+(19, 19, 'diproses');
 
 -- --------------------------------------------------------
 
@@ -197,9 +205,16 @@ INSERT INTO `vivalo_laporan_pengeluaran` (`kd_laporan`, `kd_pembelian`, `status`
 CREATE TABLE `vivalo_manajer` (
   `id_manajer` int(5) NOT NULL,
   `nama_manajer` char(30) NOT NULL,
-  `no_hp` int(11) NOT NULL,
+  `no_hp` varchar(15) NOT NULL,
   `alamat` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `vivalo_manajer`
+--
+
+INSERT INTO `vivalo_manajer` (`id_manajer`, `nama_manajer`, `no_hp`, `alamat`) VALUES
+(1, '21 guns', '0892310321', 'jl barak obama');
 
 -- --------------------------------------------------------
 
@@ -279,7 +294,11 @@ INSERT INTO `vivalo_pemesanan` (`kd_pemesanan`, `id_konsumen`, `kd_paket`, `date
 (12, 18, 2, '2018-12-11', 0, 1),
 (13, 18, 2, '2018-12-11', 0, 1),
 (14, 0, 2, '2018-12-05', 0, 1),
-(15, 12, 2, '2018-12-05', 0, 1);
+(15, 12, 2, '2018-12-05', 0, 1),
+(16, 24, 3, '2018-12-05', 0, 1),
+(17, 23, 3, '2018-12-05', 0, 1),
+(18, 23, 3, '2018-12-05', 0, 1),
+(19, 20, 2, '2018-12-04', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -311,7 +330,7 @@ INSERT INTO `vivalo_users` (`username`, `password`, `id_admin`, `email`, `id_man
 ('ijaldi', '5274b4108d38ccbb3cffc9e40a4de46a', NULL, '', NULL, 9, '3'),
 ('izal', '5274b4108d38ccbb3cffc9e40a4de46a', NULL, '', NULL, 10, '3'),
 ('konsumen', '62c47666ad1f60c5f60000391645617d', NULL, 'sada@gmail.com', NULL, 2, '3'),
-('manajer', '45cb41b32dcfb917ccd8614f1536d6da', NULL, '', NULL, 1, '2'),
+('manajer', '45cb41b32dcfb917ccd8614f1536d6da', NULL, '', 1, 1, '2'),
 ('mm', '8066f1531f1a08af0f59fe49c5cc31a8', NULL, '', NULL, 22, '3'),
 ('n', '7b8b965ad4bca0e41ab51de7b31363a1', NULL, '', NULL, 14, '3'),
 ('nn', 'eab71244afb687f16d8c4f5ee9d6ef0e', NULL, '', NULL, 17, '3'),
@@ -326,7 +345,7 @@ INSERT INTO `vivalo_users` (`username`, `password`, `id_admin`, `email`, `id_man
 ('test', '45cb41b32dcfb917ccd8614f1536d6da', NULL, '', NULL, NULL, ''),
 ('uus', 'd41d8cd98f00b204e9800998ecf8427e', NULL, 'uus@gmail.com', NULL, 12, '3'),
 ('uusss', '280fa32e8501d269d181e6567ebeea86', NULL, '', NULL, 24, '3'),
-('xx', '9336ebf25087d91c818ee6e9ec29f8c1', NULL, '', NULL, 16, '3'),
+('xx', 'd41d8cd98f00b204e9800998ecf8427e', NULL, '', NULL, 16, '3'),
 ('xxx', 'f561aaf6ef0bf14d4208bb46a4ccb3ad', NULL, '', NULL, 20, '3');
 
 --
@@ -419,7 +438,7 @@ ALTER TABLE `vivalo_admin`
 -- AUTO_INCREMENT for table `vivalo_barang`
 --
 ALTER TABLE `vivalo_barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `vivalo_kebutuhan`
 --
@@ -434,7 +453,7 @@ ALTER TABLE `vivalo_konsumen`
 -- AUTO_INCREMENT for table `vivalo_laporan_pemasukan`
 --
 ALTER TABLE `vivalo_laporan_pemasukan`
-  MODIFY `kd_laporan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `kd_laporan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `vivalo_laporan_pengeluaran`
 --
@@ -444,7 +463,7 @@ ALTER TABLE `vivalo_laporan_pengeluaran`
 -- AUTO_INCREMENT for table `vivalo_manajer`
 --
 ALTER TABLE `vivalo_manajer`
-  MODIFY `id_manajer` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_manajer` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `vivalo_paket`
 --
@@ -459,7 +478,7 @@ ALTER TABLE `vivalo_pembelian`
 -- AUTO_INCREMENT for table `vivalo_pemesanan`
 --
 ALTER TABLE `vivalo_pemesanan`
-  MODIFY `kd_pemesanan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `kd_pemesanan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- Constraints for dumped tables
 --

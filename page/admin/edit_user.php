@@ -26,25 +26,31 @@ include 'attr_head.php';
           if (isset($_GET['id_admin'])) {
             $id = $_GET['id_admin'];
             $data = $db->query("select * from vivalo_admin where id_admin='$id'")->fetch_assoc();
+
+            $ids = $data['id_admin'];
+            $nama = $data['nama_admin'];
           }else{
             $id = $_GET['id_manajer'];
-            $data = $db->query("select * from vivalo_manajer where id_admin='$id'")->fetch_assoc();
+            $data = $db->query("select * from vivalo_manajer where id_manajer='$id'")->fetch_assoc();
+
+            $ids = $data['id_manajer'];
+            $nama = $data['nama_manajer'];
           }
                  ?>
                <form action="<?= APP_URL ?>page/action/update_admin.php" method="post" id="formTambahPaket">
-                <input type="hidden" name="id_admin" value="<?php echo $data['id_admin']; ?>">
+                <input type="hidden" name="id_admin" value="<?php echo $ids; ?>">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Nama :</label>
-            <input type="text" class="form-control" required="" id="recipient-name" name="nama_admin" value="<?= $data['nama_admin']?>" >
+            <input type="text" class="form-control" required="" id="recipient-name" name="nama_admin" value="<?= $nama; ?>" >
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Nomor Telepon :</label>
             <input type="text" class="form-control" required="" value="<?= $data['no_hp']?>" id="recipient-name" name="no_hp">
           </div>
           <div class="form-group">
-            <label for="message-text" class="col-form-label">Alamat :</label>
+            <label for="message-text" class="col-form-label" >Alamat : </label>
             <!-- <input type="text" class="form-control" required="" value="<?= $data['no_hp']?>" id="recipient-name" name="no_hp"> -->
-            <textarea name="alamat" class="form-control"></textarea>
+            <textarea name="alamat" class="form-control"><?php  echo $data['alamat']; ?></textarea>
           </div>
           <button type="submit" class="btn btn-warning" >Edit</button>
         </form>
