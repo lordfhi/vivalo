@@ -31,6 +31,9 @@ include '../admin/attr_head.php';
 }
 </style>
 <div class="row">
+  <div class="col-md-12">
+    <!-- <a class="btn btn-success" style="float: right;" id="print" href="<?php echo APP_URL.'page/action/lihat_struk2.php?kd_pemesanan='.$_GET['kd_pemesanan']; ?>">Cetak</a> -->
+  </div>
   <div class="col-md-6">
     <span style="color:red;font-size: 15px;">VIVALO | Viva Laundry Online</span>
     <span style="color:black;font-size: 12px;font-weight: bold;">Jl. Jendral Sudirman KM. 05, Kudus</span>
@@ -44,17 +47,19 @@ include '../admin/attr_head.php';
   <div class="col-md-12"><hr style="background: red;"></div>
   <div class="col-md-4">
     <span style="color:red;font-size: 15px;">Tanggal</span><br>
-    <span style="color:black;font-size: 12px;font-weight: bold;">November 14, 2018</span>
+    <span style="color:black;font-size: 12px;font-weight: bold;"><?php echo date("F d, Y", strtotime($db->fetch($db->query("SELECT * FROM `vivalo_pemesanan` WHERE `kd_pemesanan` = '".$_GET["kd_pemesanan"]."'"))["date"])); ?></span>
   </div>
 
   <div class="col-md-4">
     <span style="color:red;font-size: 15px;">Untuk</span><br>
-    <span style="color:black;font-size: 12px;font-weight: bold;">Rizaldi , Jl Baraka Cimanggis, Depok. No Telp : 08990091860</span>
+    <span style="color:black;font-size: 12px;font-weight: bold;">
+      <?php $kosnumen = $db->fetch($db->query("SELECT * FROM `vivalo_konsumen` INNER JOIN vivalo_pemesanan ON vivalo_pemesanan.id_konsumen = vivalo_konsumen.id_konsumen WHERE `kd_pemesanan` = '".$_GET["kd_pemesanan"]."'")); ?>
+    <?php echo $kosnumen['nama_konsumen'].' , '.$kosnumen['alamat'].'. , No Telp'. $kosnumen['no_hp']; ?></span>
   </div>
 
   <div class="col-md-4">
     <span style="color:red;font-size: 15px;">Hal</span><br>
-    <span style="color:black;font-size: 12px;font-weight: bold;">November 14, 2018</span>
+    <span style="color:black;font-size: 12px;font-weight: bold;">Pembayaran Laundry</span>
   </div>
   <div class="col-md-12"><hr style="background: red;"></div>
   <div class="col-md-12">
@@ -67,42 +72,38 @@ include '../admin/attr_head.php';
         <th>Harga</th>
         <th>Total</th>
       </tr>
+      <?php $subtotal = 0; ?>
+      <?php foreach ($db->query("SELECT * FROM `vivalo_barang` WHERE `kd_pemesanan` = '".$_GET["kd_pemesanan"]."'") as $val): ?>
+        
       <tr>
-        <td>2</td>
-        <td>Kostum</td>
-        <td>@Rp 40.000</td>
-        <td>Rp 80.000</td>
+        <td><?php echo $val['jumlah_berat']; ?></td>
+        <td><?php echo $val['nama_barang']; ?></td>
+        <td><?php echo 'Rp '.number_format($val['harga']); ?></td>
+        <td><?php echo 'Rp '.number_format($val['total_harga']); ?></td>
       </tr>
-      <tr>
-        <td>1</td>
-        <td>Tirai</td>
-        <td>@Rp 30.000</td>
-        <td>@Rp 30.000</td>
-      </tr>
+      <?php $subtotal += $val['total_harga']; ?>
+      <?php endforeach ?>
     </table>
   </div>
   <div class="col-md-12"><br></div>
   <div class="col-md-12">
-    <span style="float: right;">Subtotal: <b>Rp 110.000</b></span><br>
+    <span style="float: right;">Subtotal: <b>Rp <?php echo number_format($subtotal); ?></b></span><br>
   </div>
   <div class="col-md-12">
-    <span style="float: right;"> <b>Admin By <?php 
-                if ($_SESSION['user_level'] == 'Admin') {
-                  $admin = $db->fetch($db->query("SELECT * FROM `vivalo_admin` WHERE `id_admin` = '".$_SESSION["user_info"]["id_admin"]."'"));
-                  echo $admin["nama_admin"];
-                }else{
-                  $admin = $db->fetch($db->query("SELECT * FROM `vivalo_manajer` WHERE `id_manajer` = '".$_SESSION["user_info"]["id_manajer"]."'"));
-                  echo $admin["nama_manajer"];
-                }
-                ?></b></span>
+    <span style="float: right;"> <b>Admin By 
+      <?php 
+      if ($_SESSION['user_level'] == 'Admin') {
+        $admin = $db->fetch($db->query("SELECT * FROM `vivalo_admin` WHERE `id_admin` = '".$_SESSION["user_info"]["id_admin"]."'"));
+        echo $admin["nama_admin"];
+      }else{
+        $admin = $db->fetch($db->query("SELECT * FROM `vivalo_manajer` WHERE `id_manajer` = '".$_SESSION["user_info"]["id_manajer"]."'"));
+        echo $admin["nama_manajer"];
+      }
+      ?>
+    </b></span>
   </div>
   <div class="col-md-12">
     <span style="float: right;color: #f34f4e;font-size: 12px;"> <b>Terima Kasih Sudah Bergabung Dengan Layanan Jasa Kami</b></span>
   </div>
 </div>  
 </div>
-<script type="text/javascript">
-  $(document).ready(function() {
-    window.print();
-  });
-</script>

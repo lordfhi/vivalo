@@ -12,17 +12,17 @@
 			VIVALO | Viva Laundry Online</h1>
 		</td>
 	</tr>
-	<tr>
+	<tr style="font-size: 30px;">
 		<td style="width: 50%; padding-right: 200px;" valign="top" align="right">Nama</td>
 		<td style="width: 2%;">:</td>
 		<td><?= ucfirst($data_konsumen["nama_konsumen"]); ?></td>
 	</tr>
-	<tr>
+	<tr style="font-size: 30px;">
 		<td style="width: 50%; padding-right: 200px;" valign="top" align="right">Alamat</td>
 		<td style="width: 2%;">:</td>
 		<td><?= $data_konsumen["alamat"] ?></td>
 	</tr>
-	<tr>
+	<tr style="font-size: 30px;">
 		<td style="width: 50%; padding-right: 200px;" valign="top" align="right">Nomor Telepon</td>
 		<td style="width: 2%;">:</td>
 		<td><?= $data_konsumen["no_hp"] ?></td>
