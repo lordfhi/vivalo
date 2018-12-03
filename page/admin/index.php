@@ -32,7 +32,7 @@ include 'attr_head.php';
                           <div class="fluid-container">
                           
                             <h3 class="font-weight-medium text-right mb-0"> Rp. <?=
-                              $db->query("SELECT SUM(total) AS total FROM vivalo_pemesanan")->fetch_assoc()['total'];
+                              number_format($db->query("SELECT SUM(total_harga) AS total FROM vivalo_barang")->fetch_assoc()['total']);
 
                             ?></h3>
                           </div>
@@ -78,7 +78,7 @@ include 'attr_head.php';
                           <p class="mb-0 text-right">Pengeluaran</p>
                           <div class="fluid-container">
                             <h3 class="font-weight-medium text-right mb-0">Rp. <?=
-                              $db->query("SELECT SUM(total_harga) AS total FROM vivalo_pembelian")->fetch_assoc()['total'];
+                              number_format($db->query("SELECT SUM(total_harga) AS total FROM vivalo_pembelian")->fetch_assoc()['total']);
 
                             ?></h3>
                           </div>

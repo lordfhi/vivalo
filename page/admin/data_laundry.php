@@ -9,7 +9,7 @@ include 'attr_head.php';
 <?php
 if (isset($_GET["pesan"]))
 {
-  if ($_GET["pesan"] == "oke") echo "<script>alert('Berhasil memperbarui data.')</script>";
+  if ($_GET["pesan"] == "oke") echo "<script>alert('Berhasil memperbarui data.');window.history.back();location.reload(); </script>";
 }
 ?>
 
@@ -46,7 +46,7 @@ if (isset($_GET["pesan"]))
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach($db->query("SELECT * FROM `vivalo_pemesanan`")->fetch_all() as $konsumen): ?>
+                  <?php foreach($db->query("SELECT * FROM `vivalo_pemesanan` INNER JOIN vivalo_paket ON vivalo_paket.kd_paket = vivalo_pemesanan.kd_paket ")->fetch_all() as $konsumen): ?>
                     <tr>
                       <td><?= $konsumen[0] ?></td>
                       <td><?= ucfirst($db->query("SELECT * FROM `vivalo_konsumen` WHERE `id_konsumen` = '".$konsumen[1]."'")->fetch_assoc()["nama_konsumen"]) ?></td>
@@ -60,7 +60,7 @@ if (isset($_GET["pesan"]))
                         $status = $db->query("SELECT * FROM `vivalo_laporan_pemasukan` WHERE `kd_pemesanan` = '".$konsumen[0]."'")->fetch_assoc()["status"];
                         if ($status == "pending")
                         {
-                          echo '<a href="#" class="btn btn-default addlndry" data-toggle="modal" data-target="#addLaundry" data-id="'.$konsumen[0].'">Tambah Data Laundry</a>';
+                          echo '<a href="#" class="btn btn-default addlndry" data-toggle="modal" data-target="#addLaundry" data-id="'.$konsumen[0].'" data-satuan="'.$konsumen[8].'">Tambah Data Laundry</a>';
                           echo '<a href="'.APP_URL.'page/action/update-status-pesanan.php?kd_pemesanan='.$konsumen[0].'&status=diproses" class="btn btn-primary">Proses</a>';
                         } else
                         if ($status == "diproses")
@@ -97,10 +97,10 @@ if (isset($_GET["pesan"]))
               <form action="../../page/action/add_barang.php" method="post">
                 <div class="modal-body">
                   <div class="row">
-                    <div class="col-md-12" style="float: right;">
+                    <div class="col-md-12" style="float: right;"><!-- 
                       <button type="button" class="btn btn-primary" style="float: right;" id="btn_add_barang">
                         tambah barang
-                      </button>
+                      </button> -->
                     </div>
                   </div>  
                   <div id="add_plus">
@@ -113,15 +113,15 @@ if (isset($_GET["pesan"]))
                         </div>
                         <div class="form-group">
                           <label>Jumlah Berat (Kg)</label>
-                          <input type="number" name="jumlah_berat[]" class="form-control">
+                          <input type="number" id="jumlah_berat" name="jumlah_berat[]" class="form-control">
                         </div>
                         <div class="form-group">
                           <label>Harga Satuan (kg)</label>
-                          <input type="number" name="harga[]" class="form-control">
+                          <input type="number" id="harga_satuan" name="harga[]" class="form-control harga_satuan">
                         </div>
                         <div class="form-group">
                           <label>Total Harga</label>
-                          <input type="number" name="total_harga[]" class="form-control">
+                          <input type="number" id="total_harga" name="total_harga[]" class="form-control">
                         </div>
                       </div>
                     </div>
@@ -182,16 +182,22 @@ if (isset($_GET["pesan"]))
 <script type="text/javascript">
   $(document).ready(function() {
     var idKonsumen;
-
+    var data_satuan;
     $(".addlndry").on('click', function() {
       idKonsumen = $(this).attr('data-id');
-      console.log("asw");
+      data_satuan = $(this).attr('data-satuan');
+      // console.log("asem");
     });
     $('#example').DataTable({
-      "scrollX": true
+      "scrollX": true,
+      "language":{
+        "url":"indonesia.json",
+        "sEmptyTable":"Tidads"
+      }
     });
     $('#addLaundry').on('show.bs.modal', function (e) {
       $(this).find('.idkons').val(idKonsumen);
+      $(this).find('.harga_satuan').val(data_satuan);
       // console.log("asw");
     });
     $("#btn_add_barang").on('click', function() {
@@ -207,6 +213,13 @@ if (isset($_GET["pesan"]))
   $('#lihatStruk').on('hidden.bs.modal', function (e) {
     location.reload();
   })
+  $("#jumlah_berat").on('keyup', function() {
+    var satuan = $(".harga_satuan").val();
+    var jumlah_berat = $(this).val();
+    var sum = parseInt(satuan) * parseInt(jumlah_berat);
+
+    $("#total_harga").val(sum);
+  });
 </script>
 
 </body></html>

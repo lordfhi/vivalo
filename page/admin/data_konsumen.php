@@ -87,7 +87,12 @@ include 'attr_head.php';
       <!-- End custom js for this page-->
 <script type="text/javascript">
   $(document).ready(function() {
-    $('#example').DataTable();
+    $('#example').DataTable({
+      "language":{
+        "url":"indonesia.json",
+        "sEmptyTable":"Tidads"
+      }
+    });
 } );
 </script>
 

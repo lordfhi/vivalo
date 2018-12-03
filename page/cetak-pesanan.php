@@ -39,5 +39,10 @@
 		</td>
 	</tr>
 </table>
+<script type="text/javascript">
+	// $(document).ready(function() {
+		window.print();
+	// });
+</script>
 </body>
 </html>
