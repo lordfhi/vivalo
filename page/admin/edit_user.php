@@ -22,13 +22,19 @@ include 'attr_head.php';
 
               <div class="row">
                 <?php
-        $id = $_GET['id_admin'];
-          $data = $db->query("select * from vivalo_admin where id_admin='$id'")->fetch_assoc();
+        
+          if (isset($_GET['id_admin'])) {
+            $id = $_GET['id_admin'];
+            $data = $db->query("select * from vivalo_admin where id_admin='$id'")->fetch_assoc();
+          }else{
+            $id = $_GET['id_manajer'];
+            $data = $db->query("select * from vivalo_manajer where id_admin='$id'")->fetch_assoc();
+          }
                  ?>
                <form action="<?= APP_URL ?>page/action/update_admin.php" method="post" id="formTambahPaket">
                 <input type="hidden" name="id_admin" value="<?php echo $data['id_admin']; ?>">
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Nama Admin :</label>
+            <label for="recipient-name" class="col-form-label">Nama :</label>
             <input type="text" class="form-control" required="" id="recipient-name" name="nama_admin" value="<?= $data['nama_admin']?>" >
           </div>
           <div class="form-group">
