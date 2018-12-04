@@ -107,3 +107,8 @@ include '../admin/attr_head.php';
   </div>
 </div>  
 </div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    window.print();
+  });
+</script>

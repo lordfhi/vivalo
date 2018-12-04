@@ -59,8 +59,12 @@ $user_info = $db->fetch($db->query("SELECT * FROM `vivalo_konsumen` WHERE `id_ko
       <div class="pulse1"></div>
       <div class="pulse2"></div>
       <div class="profile-overlay">
+        <?php if (isset($user_info['file'])): ?>
+          
         <?php if ($user_info['file'] != ''): ?>
             <img src="../asset/img/<?= $user_info["file"] ?>" style="border-radius: 50%;width: 230px;height: 220px;">
+        <?php endif ?>
+        
         <?php endif ?>
       </div><br>
       <span style="text-align: center;"> Edit Profil Anda?</span></center>
