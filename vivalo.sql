@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2018 at 02:14 AM
+-- Generation Time: Dec 04, 2018 at 01:39 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -137,7 +137,8 @@ INSERT INTO `vivalo_konsumen` (`id_konsumen`, `nama_konsumen`, `email`, `alamat`
 (22, 'mm', '', 'jajaja', '0912931923', ''),
 (23, 'sad', 'sada@gmail.com', 'jajaja', '09812381293', ''),
 (24, 'uusss', 'rizaldi354313@gmail.com', 'uusss', '08990091860', ''),
-(25, 'rijal', 'rijal@gmail.com', 'baraka', '08990091860', '11102803_1601218896784860_4593040736968653880_n.jpg');
+(25, 'rijal', 'rijal@gmail.com', 'baraka', '08990091860', '11102803_1601218896784860_4593040736968653880_n.jpg'),
+(26, 'ju', 'ju@ju.com', 'jajaja', '089912390', '');
 
 -- --------------------------------------------------------
 
@@ -335,6 +336,7 @@ INSERT INTO `vivalo_users` (`username`, `password`, `id_admin`, `email`, `id_man
 ('ijaldi', '5274b4108d38ccbb3cffc9e40a4de46a', NULL, '', NULL, 9, '3'),
 ('izal', '5274b4108d38ccbb3cffc9e40a4de46a', NULL, '', NULL, 10, '3'),
 ('j', 'd41d8cd98f00b204e9800998ecf8427e', NULL, 'rijal@gmail.com', NULL, 25, '3'),
+('ju', 'e744f57da9e5a4bb6ec8ba3bc0ad3e4e', NULL, '', NULL, 26, '3'),
 ('konsumen', '62c47666ad1f60c5f60000391645617d', NULL, 'sada@gmail.com', NULL, 2, '3'),
 ('manajer', '45cb41b32dcfb917ccd8614f1536d6da', NULL, '', 1, 1, '2'),
 ('mm', '8066f1531f1a08af0f59fe49c5cc31a8', NULL, '', NULL, 22, '3'),
@@ -368,7 +370,8 @@ ALTER TABLE `vivalo_admin`
 -- Indexes for table `vivalo_barang`
 --
 ALTER TABLE `vivalo_barang`
-  ADD PRIMARY KEY (`id_barang`);
+  ADD PRIMARY KEY (`id_barang`),
+  ADD KEY `kd_pemesanan` (`kd_pemesanan`);
 
 --
 -- Indexes for table `vivalo_kebutuhan`
@@ -454,7 +457,7 @@ ALTER TABLE `vivalo_kebutuhan`
 -- AUTO_INCREMENT for table `vivalo_konsumen`
 --
 ALTER TABLE `vivalo_konsumen`
-  MODIFY `id_konsumen` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_konsumen` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `vivalo_laporan_pemasukan`
 --
@@ -488,6 +491,12 @@ ALTER TABLE `vivalo_pemesanan`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `vivalo_barang`
+--
+ALTER TABLE `vivalo_barang`
+  ADD CONSTRAINT `vivalo_barang_ibfk_1` FOREIGN KEY (`kd_pemesanan`) REFERENCES `vivalo_pemesanan` (`kd_pemesanan`);
 
 --
 -- Constraints for table `vivalo_laporan_pemasukan`

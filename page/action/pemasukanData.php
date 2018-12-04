@@ -1,7 +1,7 @@
 
 	<table border="1">
         <tr>            
-            <th>Kode Pemesanan</th>
+            <th>No</th>
             <th>Konsumen</th>
             <th>Jumlah Laundry</th>
             <th>Kode Paket</th>
@@ -22,3 +22,20 @@
         </tr>
         <?php endforeach ?>
 	</table>
+<br>
+Total Pemasukan : <b>Rp. <?=
+    $db->query("SELECT SUM(total_harga) AS total FROM vivalo_barang")->fetch_assoc()['total'];
+?>
+</b>
+<br>
+<br>
+Penanggung Jawab : 
+<?php 
+if ($_SESSION['user_level'] == 'Admin') {
+    $admin = $db->fetch($db->query("SELECT * FROM `vivalo_admin` WHERE `id_admin` = '".$_SESSION["user_info"]["id_admin"]."'"));
+    echo $admin["nama_admin"];
+}else{
+    $admin = $db->fetch($db->query("SELECT * FROM `vivalo_manajer` WHERE `id_manajer` = '".$_SESSION["user_info"]["id_manajer"]."'"));
+    echo $admin["nama_manajer"];
+}
+?>
