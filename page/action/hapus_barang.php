@@ -20,7 +20,11 @@ if ($delLapData)
 			//mengalihkan halaman kembali ke index.php
 			redirectPage("page/admin/barang.php");
 		}
+	}else{
+		redirectPage("page/admin/barang.php");
 	}
+}else{
+	redirectPage("page/admin/barang.php");
 }
 
 

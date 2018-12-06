@@ -10,7 +10,7 @@ if (!cekLoginAuth())
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Vivalo Admin</title>
+  <title>Vivalo <?php echo $_SESSION['user_level']; ?></title>
 
   <link rel="stylesheet" href="../../asset/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../../asset/vendors/css/vendor.bundle.base.css">

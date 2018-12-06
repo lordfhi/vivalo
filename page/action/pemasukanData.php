@@ -14,9 +14,9 @@
         <tr>
             <td><?= $konsumen[0] ?></td>
             <td><?= ucfirst($db->query("SELECT * FROM `vivalo_konsumen` WHERE `id_konsumen` = '".$konsumen[1]."'")->fetch_assoc()["nama_konsumen"]) ?></td>
-            <td><?= $konsumen[4] ?> kg</td>
+            <td><?php $q = $db->query("SELECT SUM(jumlah_berat) as jumlah FROM `vivalo_barang` WHERE `kd_pemesanan` = '".$konsumen[0]."'")->fetch_assoc()["jumlah"]; if($q == null || $q == ""){ echo "0"; }else{ echo $q; } ?> kg</td>
             <td><?= $db->query("SELECT * FROM `vivalo_paket` WHERE `kd_paket` = '".$konsumen[2]."'")->fetch_assoc()["nama_paket"] ?> (Rp <?= $db->query("SELECT * FROM `vivalo_paket` WHERE `kd_paket` = '".$konsumen[2]."'")->fetch_assoc()["harga_paket"] ?>)</td>
-            <td>Rp <?= ($konsumen[4] * $db->query("SELECT * FROM `vivalo_paket` WHERE `kd_paket` = '".$konsumen[2]."'")->fetch_assoc()["harga_paket"]) ?></td>
+            <td>Rp <?php $qs = $db->query("SELECT total_harga FROM `vivalo_barang` WHERE `kd_pemesanan` = '".$konsumen[0]."'")->fetch_assoc()["total_harga"]; if($qs == null || $qs == ""){ echo "0"; }else{ echo $qs; } ?></td>
             <td><?= $konsumen[3] ?></td>
             <td><?= $db->query("SELECT * FROM `vivalo_laporan_pemasukan` WHERE `kd_pemesanan` = '".$konsumen[0]."'")->fetch_assoc()["status"] ?></td>
         </tr>

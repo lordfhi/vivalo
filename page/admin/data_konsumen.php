@@ -28,6 +28,7 @@ include 'attr_head.php';
                             <tr>
                                 <th>ID Konsumen</th>
                                 <th>Nama Konsumen</th>
+                                <th>Email</th>
                                 <th>Alamat</th>
                                 <th>Nomer Telepon</th>
                             </tr>
@@ -39,6 +40,7 @@ include 'attr_head.php';
                                 <td><?= $konsumen[1] ?></td>
                                 <td><?= $konsumen[2] ?></td>
                                 <td><?= $konsumen[3] ?></td>
+                                <td><?= $konsumen[4] ?></td>
                             </tr>
                             <?php endforeach ?>
                         </tbody>

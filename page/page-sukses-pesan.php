@@ -5,6 +5,7 @@ if (!cekLoginAuth())
 {
    redirectPage("page/page-register.php");
 }
+$user_info = $db->fetch($db->query("SELECT * FROM `vivalo_konsumen` WHERE `id_konsumen` = '".$_SESSION["user_info"]["id_konsumen"]."'"));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +44,7 @@ if (!cekLoginAuth())
         <tr>
           <td style="width: 40%; padding-left: 45px;" align="left">Nama Pengguna</td>
           <td style="width: 5%;" align="center">:</td>
-          <td align="center"><?= $_SESSION["user_nama"]; ?></td>
+          <td align="center"><?= $user_info["nama_konsumen"]; ?></td>
         </tr>
         <tr>
           <td colspan="3" style="height: 20px;"></td>
@@ -51,7 +52,7 @@ if (!cekLoginAuth())
         <tr>
           <td style="width: 40%; padding-left: 45px;" align="left">Alamat</td>
           <td style="width: 5%;" align="center">:</td>
-          <td align="center"><?= $_SESSION["user_info"]["alamat"]; ?></td>
+          <td align="center"><?= $user_info["alamat"]; ?></td>
         </tr>
         <tr>
           <td colspan="3" style="height: 20px;"></td>
@@ -59,7 +60,7 @@ if (!cekLoginAuth())
         <tr>
           <td style="width: 40%; padding-left: 45px;" align="left">Nomor Telepon</td>
           <td style="width: 5%;" align="center">:</td>
-          <td align="center"><?= $_SESSION["user_info"]["no_hp"]; ?></td>
+          <td align="center"><?= $user_info["no_hp"]; ?></td>
         </tr>
         <tr>
           <td colspan="3" style="height: 20px;"></td>

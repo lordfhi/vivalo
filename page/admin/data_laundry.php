@@ -38,7 +38,7 @@ if (isset($_GET["pesan"]))
                     <th>Kode Pemesanan</th>
                     <th>Konsumen</th>
                     <!-- <th>Jumlah Laundry</th> -->
-                    <th>Kode Paket</th>
+                    <th>Nama Paket</th>
                     <!-- <th>Jumlah Harga</th> -->
                     <th>Tanggal Pesan</th>
                     <th>Status</th>
