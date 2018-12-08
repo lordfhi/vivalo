@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2018 at 01:39 PM
--- Server version: 10.1.25-MariaDB
--- PHP Version: 5.6.31
+-- Generation Time: Dec 08, 2018 at 04:10 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -62,15 +62,7 @@ CREATE TABLE `vivalo_barang` (
 --
 
 INSERT INTO `vivalo_barang` (`id_barang`, `kd_pemesanan`, `nama_barang`, `jumlah_berat`, `harga`, `total_harga`) VALUES
-(3, 10, 'cinta', '10', '20000', '3000000'),
-(4, 10, 'huhu', '123', '30000', '1000000'),
-(5, 15, 'sdsd', '123', '1000000', '3000000'),
-(6, 15, 'sjsjs', '123', '1000000', '100000'),
-(7, 19, 'asdw', '5', '30000', '150000'),
-(8, 19, 'sjs', '3', '30000', '90000'),
-(9, 19, 'jj', '12', '30000', '360000'),
-(10, 11, 'jaja', '123', '50002', '6150246'),
-(11, 14, 'as', '23', '30000', '690000');
+(1, 1, 'Baju', '2', '10000', '20000');
 
 -- --------------------------------------------------------
 
@@ -89,9 +81,7 @@ CREATE TABLE `vivalo_kebutuhan` (
 --
 
 INSERT INTO `vivalo_kebutuhan` (`kd_barang`, `nama_barang`, `harga`) VALUES
-(1, 'Detergen', 10000),
-(2, 'Pewangi', 20000),
-(3, 'test', 100000);
+(4, 'Deterjen', 900000);
 
 -- --------------------------------------------------------
 
@@ -113,32 +103,7 @@ CREATE TABLE `vivalo_konsumen` (
 --
 
 INSERT INTO `vivalo_konsumen` (`id_konsumen`, `nama_konsumen`, `email`, `alamat`, `no_hp`, `file`) VALUES
-(1, 'User', '', '', NULL, ''),
-(2, 'user2', '', 'asdasd', '8989', ''),
-(3, 'awe', '', '', NULL, ''),
-(4, 'asdsad', '', '', NULL, ''),
-(5, 'aweawe', '', '', NULL, ''),
-(6, 'rizal', '', 'Jl babakan Rawa Kalong RT 05/RW 08 , Curug Cimangg', '2147483647', ''),
-(7, 'Rizaldi', '', 'jakarta', '2147483647', ''),
-(8, 'rrrr', '', 'rrrr', '2147483647', ''),
-(9, 'ijaldi', '', 'baraka', '2147483647', ''),
-(10, 'izal', '', 'jakarta', '2147483647', ''),
-(11, 'ija', '', 'jaaaa', '8292812', ''),
-(12, 'uus', '', 'uus', '08231239', ''),
-(13, 'iis', '', 'asdasd', '2147483647', ''),
-(14, 'n', '', 'n', '2147483647', ''),
-(15, 's', '', 's', '2147483647', ''),
-(16, 'xx', '', 'xx', '2147483647', '343225-176-k720920.jpg'),
-(17, 'nn', '', 'nn', '0', ''),
-(18, 'ss', '', 'ss', '08990091860', ''),
-(19, 'Rizaldi Rizal', '', 'sdsd', '08990091860', ''),
-(20, 'xxx', '', 'xxx', '01239123', '15698059_1842613895978691_4463830047466678924_n.jpg'),
-(21, 'sada', '', 'sada', '08990091860', ''),
-(22, 'mm', '', 'jajaja', '0912931923', ''),
-(23, 'sad', 'sada@gmail.com', 'jajaja', '09812381293', ''),
-(24, 'uusss', 'rizaldi354313@gmail.com', 'uusss', '08990091860', ''),
-(25, 'rijal', 'rijal@gmail.com', 'baraka', '08990091860', '11102803_1601218896784860_4593040736968653880_n.jpg'),
-(26, 'ju', 'ju@ju.com', 'jajaja', '089912390', '');
+(1, 'gaga', 'gaga@gmail.com', 'gagagaga', '88888', 'favicon.png');
 
 -- --------------------------------------------------------
 
@@ -157,26 +122,7 @@ CREATE TABLE `vivalo_laporan_pemasukan` (
 --
 
 INSERT INTO `vivalo_laporan_pemasukan` (`kd_laporan`, `kd_pemesanan`, `status`) VALUES
-(1, 1, '??'),
-(2, 2, '??'),
-(3, 3, '??'),
-(4, 4, '??'),
-(5, 5, '??'),
-(6, 6, '??'),
-(7, 7, '??'),
-(8, 8, 'selesai'),
-(9, 9, 'diproses'),
-(10, 10, 'diproses'),
-(11, 11, 'diproses'),
-(12, 12, 'diproses'),
-(13, 13, 'diproses'),
-(14, 14, 'diproses'),
-(15, 15, 'pending'),
-(16, 16, 'pending'),
-(17, 17, 'pending'),
-(18, 18, 'pending'),
-(19, 19, 'diproses'),
-(20, 20, 'pending');
+(1, 1, 'selesai');
 
 -- --------------------------------------------------------
 
@@ -196,10 +142,7 @@ CREATE TABLE `vivalo_laporan_pengeluaran` (
 
 INSERT INTO `vivalo_laporan_pengeluaran` (`kd_laporan`, `kd_pembelian`, `status`) VALUES
 (1, 0, 'sukses'),
-(2, 0, 'sukses'),
-(3, 0, 'sukses'),
-(4, 0, 'sukses'),
-(5, 0, 'sukses');
+(2, 0, 'sukses');
 
 -- --------------------------------------------------------
 
@@ -238,9 +181,7 @@ CREATE TABLE `vivalo_paket` (
 --
 
 INSERT INTO `vivalo_paket` (`kd_paket`, `nama_paket`, `harga_paket`) VALUES
-(1, 'Standart', 15000),
-(2, 'Kilat', 30000),
-(3, 'Setrika', 50002);
+(90, 'Paket Kila', 10000);
 
 -- --------------------------------------------------------
 
@@ -261,9 +202,7 @@ CREATE TABLE `vivalo_pembelian` (
 --
 
 INSERT INTO `vivalo_pembelian` (`kd_pembelian`, `kd_barang`, `total_harga`, `jumlah_barang`, `date`) VALUES
-(2, 1, 0, 122, '2018-12-28'),
-(3, 3, 0, 3, '2018-12-11'),
-(5, 3, 10000000, 100, '2018-12-21');
+(2, 4, 2700000, 3, '2018-12-08');
 
 -- --------------------------------------------------------
 
@@ -285,26 +224,7 @@ CREATE TABLE `vivalo_pemesanan` (
 --
 
 INSERT INTO `vivalo_pemesanan` (`kd_pemesanan`, `id_konsumen`, `kd_paket`, `date`, `jumlah_laundry`, `total`) VALUES
-(1, 2, 1, '0000-00-00', 0, 10000),
-(2, 2, 1, '0000-00-00', 0, 0),
-(3, 2, 1, '2018-11-29', 0, 0),
-(4, 2, 1, '2018-11-29', 0, 0),
-(5, 2, 1, '2018-11-30', 0, 0),
-(6, 2, 3, '2018-11-30', 0, 0),
-(7, 2, 1, '2018-11-29', 0, 0),
-(8, 6, 2, '2018-12-01', 1, 1),
-(9, 0, 3, '2018-12-14', 0, 1),
-(10, 0, 3, '2018-12-05', 0, 1),
-(11, 6, 3, '2018-12-20', 0, 1),
-(12, 18, 2, '2018-12-11', 0, 1),
-(13, 18, 2, '2018-12-11', 0, 1),
-(14, 0, 2, '2018-12-05', 0, 1),
-(15, 12, 2, '2018-12-05', 0, 1),
-(16, 24, 3, '2018-12-05', 0, 1),
-(17, 23, 3, '2018-12-05', 0, 1),
-(18, 23, 3, '2018-12-05', 0, 1),
-(19, 20, 2, '2018-12-04', 0, 1),
-(20, 25, 1, '2018-12-05', 0, 1);
+(1, 1, 90, '2018-12-08', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -331,14 +251,16 @@ INSERT INTO `vivalo_users` (`username`, `password`, `id_admin`, `email`, `id_man
 ('asdsad', '74b87337454200d4d33f80c4663dc5e5', NULL, '', NULL, 4, '3'),
 ('awe', '055d8401835cbd280eebce0ad57be90c', NULL, '', NULL, 3, '3'),
 ('aweawe', '62c47666ad1f60c5f60000391645617d', NULL, '', NULL, 5, '3'),
+('gaga', '4297f44b13955235245b2497399d7a93', NULL, 'gaga@gmail.com', NULL, 1, '3'),
 ('iis', 'c7c9b5abc39fc757817e8a49a1e269ae', NULL, '', NULL, 13, '3'),
 ('ija', '94e2772cff476ae14eed276e81ae5b4d', NULL, '', NULL, 11, '3'),
 ('ijaldi', '5274b4108d38ccbb3cffc9e40a4de46a', NULL, '', NULL, 9, '3'),
 ('izal', '5274b4108d38ccbb3cffc9e40a4de46a', NULL, '', NULL, 10, '3'),
 ('j', 'd41d8cd98f00b204e9800998ecf8427e', NULL, 'rijal@gmail.com', NULL, 25, '3'),
 ('ju', 'e744f57da9e5a4bb6ec8ba3bc0ad3e4e', NULL, '', NULL, 26, '3'),
+('kodok', 'd41d8cd98f00b204e9800998ecf8427e', NULL, 'kodok@gmail.com', NULL, 27, '3'),
 ('konsumen', '62c47666ad1f60c5f60000391645617d', NULL, 'sada@gmail.com', NULL, 2, '3'),
-('manajer', '45cb41b32dcfb917ccd8614f1536d6da', NULL, '', 1, 1, '2'),
+('manajer', '4297f44b13955235245b2497399d7a93', NULL, 'gaga@gmail.com', 1, 1, '2'),
 ('mm', '8066f1531f1a08af0f59fe49c5cc31a8', NULL, '', NULL, 22, '3'),
 ('n', '7b8b965ad4bca0e41ab51de7b31363a1', NULL, '', NULL, 14, '3'),
 ('nn', 'eab71244afb687f16d8c4f5ee9d6ef0e', NULL, '', NULL, 17, '3'),
@@ -443,51 +365,61 @@ ALTER TABLE `vivalo_users`
 --
 ALTER TABLE `vivalo_admin`
   MODIFY `id_admin` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `vivalo_barang`
 --
 ALTER TABLE `vivalo_barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `vivalo_kebutuhan`
 --
 ALTER TABLE `vivalo_kebutuhan`
-  MODIFY `kd_barang` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `kd_barang` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `vivalo_konsumen`
 --
 ALTER TABLE `vivalo_konsumen`
-  MODIFY `id_konsumen` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_konsumen` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `vivalo_laporan_pemasukan`
 --
 ALTER TABLE `vivalo_laporan_pemasukan`
-  MODIFY `kd_laporan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `kd_laporan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `vivalo_laporan_pengeluaran`
 --
 ALTER TABLE `vivalo_laporan_pengeluaran`
-  MODIFY `kd_laporan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `kd_laporan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `vivalo_manajer`
 --
 ALTER TABLE `vivalo_manajer`
   MODIFY `id_manajer` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `vivalo_paket`
 --
 ALTER TABLE `vivalo_paket`
-  MODIFY `kd_paket` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `kd_paket` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+
 --
 -- AUTO_INCREMENT for table `vivalo_pembelian`
 --
 ALTER TABLE `vivalo_pembelian`
-  MODIFY `kd_pembelian` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `kd_pembelian` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `vivalo_pemesanan`
 --
 ALTER TABLE `vivalo_pemesanan`
-  MODIFY `kd_pemesanan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `kd_pemesanan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- Constraints for dumped tables
 --
@@ -509,12 +441,6 @@ ALTER TABLE `vivalo_laporan_pemasukan`
 --
 ALTER TABLE `vivalo_pembelian`
   ADD CONSTRAINT `vivalo_pembelian_ibfk_1` FOREIGN KEY (`kd_barang`) REFERENCES `vivalo_kebutuhan` (`kd_barang`);
-
---
--- Constraints for table `vivalo_pemesanan`
---
-ALTER TABLE `vivalo_pemesanan`
-  ADD CONSTRAINT `paket` FOREIGN KEY (`kd_paket`) REFERENCES `vivalo_paket` (`kd_paket`);
 
 --
 -- Constraints for table `vivalo_users`

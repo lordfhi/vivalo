@@ -13,8 +13,8 @@ include 'attr_head.php';
       <?php
       if (isset($_GET["pesan"]))
       {
-        if ($_GET["pesan"] == "buat_oke") echo "<script>alert('Berhasil menambahkan data paket.')</script>";
-        if ($_GET["pesan"] == "data_ada") echo "<script>alert('Gagal menambahkan data paket, data sudah ada!')</script>";
+        if ($_GET["pesan"] == "buat_oke") echo "<script>alert('Berhasil menambahkan data barang.')</script>";
+        if ($_GET["pesan"] == "data_ada") echo "<script>alert('Gagal menambahkan data barang, data sudah ada!')</script>";
       }
       ?>
       <div class="container-scroller">
