@@ -75,7 +75,7 @@ if (cekLoginAuth())
 	               <!-- <input id="Username" class="signup-inputs" type="username" name="username" placeholder='Username' required="required">  -->
                <input  class="signup-inputs" type="email" name="email" placeholder='Email' required="required"> 
                <input  class="signup-inputs" type="text" name="alamat" placeholder='alamat' required="required"> 
-               <input  class="signup-inputs" type="text" name="no_hp" placeholder='No Hp' required="required"> 
+               <input  class="signup-inputs" type="number" name="no_hp" placeholder='No Hp' required="required"> 
 
 	               <input id="password" class="signup-inputs" type="password" name="password" placeholder='Kata Sandi' required="required">
 	               <button id='btn-regis' class="btn-log">DAFTAR</button>
